@@ -7,21 +7,22 @@ You can pick a specific niche of items to sell for the app (a cars site, a shoes
 This lets buyers find the items they are looking for quickly, and easily contact sellers.
 
 ### Requirements:
-users can see featured items on a main feed
-users can filter items by price,
-users can favourite items to check up on them later
-users can send messages to the user that is listing the item
+* users can see featured items on a main feed
+* users can filter items by price,
+* users can favourite items to check up on them later
+* users can send messages to the user that is listing the item
 
 ### Admins can:
-post items, which can be seen by others
-remove items from the site
-mark items as SOLD!,
-send a message via app, email, or text back on negotiations in buying the said item
+* post items, which can be seen by others
+* remove items from the site
+* mark items as SOLD!,
+* send a message via app, email, or text back on negotiations in buying the said item
 
 ### User Stories:
-User = buyer
-Admin = seller
-As a ___ I can ___ because ___
+* User = buyer
+* Admin = seller
+
+*As a ___ I can ___ because ___
 
 As a user, I can see the featured items on my main feed because I want to buy items
 
