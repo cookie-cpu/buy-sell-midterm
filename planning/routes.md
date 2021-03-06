@@ -19,6 +19,13 @@
 # DELETE - admin delete item
 * POST /items/:id/delete
 
+## USERS
+
+# BROWSE - view all items listed by a specific user
+* GET  /items/:user_id 
+
+# READ - view specific item listed by a specific user
+* GET  /items/:user_id/:id 
 
 ## MY FAVORITES
 
@@ -27,9 +34,6 @@
 
 # READ - view specific favorite
 * GET /favorites/:id
-
-<!-- # EDIT 
-* POST /favorites/:id -->
 
 # ADD - create fav connection
 * POST /favorites
@@ -46,11 +50,5 @@
 # READ - view a specific msg
 * GET /messages/:id
 
-<!-- # EDIT -->
-<!-- * POST /messages/:id -->
-
 # ADD - reply to a msg
 * POST /messages
-
-<!-- # DELETE
-* POST /messages/:id/delete -->
