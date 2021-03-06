@@ -6,6 +6,20 @@ You can pick a specific niche of items to sell for the app (a cars site, a shoes
 
 This lets buyers find the items they are looking for quickly, and easily contact sellers.
 
+# Minimum Viable Demo Features:
+* Display homepage with products
+* search (price)
+* Display specific item(s) (search result) 
+* Favorite that item
+* Display users favorite
+* Message the seller
+* change item(s) SOLD status
+* List new item
+* Edit product status
+* Delete SOLD item
+
+
+
 ### Requirements:
 * users can see featured items on a main feed
 * users can filter items by price,
