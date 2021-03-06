@@ -6,4 +6,3 @@ VALUES ('Alice', 'Alice@email.com', '123', FALSE),
  ('Kira', 'Kira@nomail.com', '123', TRUE),
  ('Emma', 'Emma@nomail.com', '123', TRUE);
 
-
