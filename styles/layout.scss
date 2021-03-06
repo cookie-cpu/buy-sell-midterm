@@ -14,9 +14,11 @@ body {
 
 
 nav {
+  background-color: cornflowerblue;
   display: flex;
   align-items: center;
   justify-content: space-around;
   position: fixed;
   top: 0;
+  width: 100%;
 }
