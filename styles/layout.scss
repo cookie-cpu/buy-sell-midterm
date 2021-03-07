@@ -22,3 +22,24 @@ nav {
   top: 0;
   width: 100%;
 }
+
+.items-display {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.item-listing {
+  margin: 20px 0;
+  width: 100%;
+  max-width: 600px;
+  height: 200px;
+  border: 1px solid black;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: stretch;
+}
