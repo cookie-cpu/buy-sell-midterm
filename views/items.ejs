@@ -13,6 +13,26 @@
   </head>
 
   <body>
-    <h1><%= items.id %> </h1>
-    <h1><%= items.name %> </h1>
+
+    <section class="items-display">
+
+    <article class="item-listing">
+      <h1>Item ID: <%= items.id %> </h1>
+      <h1><%= items.name %> </h1>
+      <img src="<%= items.photo_url %>">
+      <div>
+        <li><%= items.description %> </li>
+        <li>$ <%= items.price %> </li>
+        <li> Is sold?: <%= items.sold %></li>
+        <!-- <li><% if (items.sold === false) { %>
+          <h5>AVAILABLE</h5>
+          <% } else{ %>
+            <h5>SOLD</h5>
+        </li> -->
+
+      </div>
+    </article>
+
+    </section>
+
   </body>
