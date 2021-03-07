@@ -5,32 +5,33 @@
 ## ITEMS (HOME PAGE)
 
 # BROWSE - view homepage
-* GET /items
+* GET /api/items
 
 # READ - view specific item's page
-* GET /items/:id
+* GET /api/items/:id
 
 # EDIT - admin edit data 
-* POST /items/:id
+* POST /api/items/:id
 
 # ADD - admin add item
-* POST /items
+* POST /api/items
 
 # DELETE - admin delete item
-* POST /items/:id/delete
+* POST /api/items/:id/delete
 
 ## USERS
 
 # BROWSE - view all items listed by a specific user
-* GET  /items/:user_id 
+* GET  /api/items/:user_id 
 
 # READ - view specific item listed by a specific user
-* GET  /items/:user_id/:id 
+* GET  /api/items/:user_id/:id 
 
 ## MY FAVORITES
 
 # BROWSE - view all favorite per user
-* GET /favorites
+<!-- GET /users/favorites -->
+* GET /favorites/:user_id
 
 # READ - view specific favorite
 * GET /favorites/:id
