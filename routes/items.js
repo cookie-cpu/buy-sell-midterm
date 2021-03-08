@@ -52,11 +52,19 @@ module.exports = (db) => {
   //   res.render("itemUpdate")
   // });
 
-
+// THIS IS THE EDIT BUTTON ROUTE
   router.post("/:id", (req, res) => {
     console.log('the post/:id req.params.id is:', req.params.id);
-    console.log('the post/:id req.params.id is:', req.body);
-    db.query(`UPDATE items SET name = 'daffodli' WHERE id = $1;`,[req.params.id])
+    console.log('req.body is:', req.body);
+    db.query(`
+    UPDATE items SET
+    name = $1,
+    description = $2,
+    price = $3,
+    photo_url = $4,
+    sold = $5
+    WHERE id = $6;`
+    ,[req.body.name, req.body.description, req.body.price, req.body.photo_url, req.body.sold, req.params.id])
       .then(data => {
         console.log('the post /:id data is: ', data.rows[0])
         const items = data.rows[0];
