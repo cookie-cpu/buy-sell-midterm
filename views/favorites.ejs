@@ -26,6 +26,7 @@
             <li>$ <%= item.price %> </li>
             <li><%= item.sold %></li>
           </div>
+          <form method="POST" action="/favorites/<%= item.id %>/delete"><button type="submit">Unfav</button></form>
         </article>
         <% } %>
 
