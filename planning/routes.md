@@ -5,27 +5,27 @@
 ## ITEMS (HOME PAGE)
 
 # BROWSE - view homepage
-* GET /api/items
+* GET /items
 
 # READ - view specific item's page
-* GET /api/items/:id
+* GET /items/:id
 
 # EDIT - admin edit data 
-* POST /api/items/:id
+* POST /items/:id
 
 # ADD - admin add item
-* POST /api/items
+* POST /items
 
 # DELETE - admin delete item
-* POST /api/items/:id/delete
+* POST /items/:id/delete
 
 ## USERS
 
 # BROWSE - view all items listed by a specific user
-* GET  /api/items/:user_id 
+* GET  /items/:user_id 
 
 # READ - view specific item listed by a specific user
-* GET  /api/items/:user_id/:id 
+* GET  /items/:user_id/:id 
 
 ## MY FAVORITES
 

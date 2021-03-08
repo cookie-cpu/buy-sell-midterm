@@ -15,18 +15,35 @@
   <body>
 
     <section class="items-display">
+<!--
+<% if (items.length === 1) { %>
+  <article class="item-listing">
+    <h1>Item ID: <%= items.id %> </h1>
+    <h1><%= items.name %> </h1>
+    <img src="<%= items.photo_url %>">
+    <div class="items-info">
+      <li><%= items.description %> </li>
+      <li>$ <%= items.price %> </li>
+      <li><%= items.sold %></li>
+    </div>
+    <% } %> -->
 
+<!-- <% if (items.length > 1) { %> -->
+      <% for (let item in items) { %>
     <article class="item-listing">
-      <h1>Item ID: <%= items.id %> </h1>
-      <h1><%= items.name %> </h1>
-      <img src="<%= items.photo_url %>">
+      <h1>ID: <%= item.id %> </h1>
+      <h1>Name: <%= item.name %> </h1>
+      <img src="<%= item.photo_url %>">
       <div class="item-info">
-        <li><%= items.description %> </li>
-        <li>$ <%= items.price %> </li>
-        <li><%= items.sold %></li>
+        <li>Description: <%= item.description %> </li>
+        <li>$ <%= item.price %> </li>
+        <li>Sold: <%= item.sold %></li>
       </div>
-      <button href="/itemUpdate">EDIT</button>
+      <!-- <form method="GET" action="/urls/<%= item.id %>"><button type="submit">edit</button></form> -->
+      <!-- <button href="/api/items/update">EDIT</button> -->
     </article>
+    <% } %>
+<!-- <% } %> -->
 
     </section>
 

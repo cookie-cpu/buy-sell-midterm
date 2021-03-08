@@ -10,7 +10,7 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    let query = `SELECT * FROM favorites`; //add items db using join
+    let query = `SELECT * from favorites JOIN items ON item_id = items.id;`; //add items db using join
     console.log(query);
     db.query(query)
       .then(data => {
