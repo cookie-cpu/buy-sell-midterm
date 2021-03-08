@@ -36,7 +36,7 @@ module.exports = (db) => {
       .then(data => {
         console.log('the get /:id data is: ', data.rows[0])
         const item = data.rows[0];
-        res.render("item_singular", {item});  // make new  item.ejs . no for loop need.
+        res.render("item_show", {item});  // make new  item.ejs . no for loop need.
         //res.json({ items });
       })
       .catch(err => {
@@ -60,7 +60,7 @@ module.exports = (db) => {
       .then(data => {
         console.log('the post /:id data is: ', data.rows[0])
         const items = data.rows[0];
-        res.redirect('/');
+        res.redirect('/items');
         //res.json({ items });
       })
       .catch(err => {
@@ -79,7 +79,7 @@ module.exports = (db) => {
       .then(data => {
         console.log('the post / data is: ', data.rows[0])
         const items = data.rows[0];
-        res.redirect('/');
+        res.redirect('/items');
         //res.json({ items });
       })
       .catch(err => {

@@ -40,7 +40,7 @@
         <li>$ <%= item.price %> </li>
         <li>Sold: <%= item.sold %></li>
       </div>
-      <!-- <form method="GET" action="/urls/<%= item.id %>"><button type="submit">edit</button></form> -->
+      <form method="GET" action="/items/<%= item.id %>"><button type="submit">edit</button></form>
       <!-- <button href="/api/items/update">EDIT</button> -->
     </article>
     <% } %>

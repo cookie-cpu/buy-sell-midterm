@@ -1,33 +1,33 @@
-$(() => {
+// $(() => {
 
-  $('#b1').on('click', onClick);
+//   $('#b1').on('click', onClick);
 
-});
+// });
 
-const onClick = function(event) {
-  console.log('click');
+// const onClick = function(event) {
+//   console.log('click');
 
-  $.ajax({
-    method: 'GET',
-    url: '/items'
-  }).done((res) => {
-    console.log(res);
-    $('ul').empty();
-    for (item of res.items) {
-      $('<li>').text(item.name).appendTo($('ul'));
-    }
-  });
+//   $.ajax({
+//     method: 'GET',
+//     url: '/items'
+//   }).done((res) => {
+//     console.log(res);
+//     $('ul').empty();
+//     for (item of res.items) {
+//       $('<li>').text(item.name).appendTo($('ul'));
+//     }
+//   });
 
-  $('#div1').text('123');
+//   $('#div1').text('123');
 
-}
+// }
 
 
-  $.ajax({
-    method: "GET",
-    url: "/api/users"
-  }).done((users) => {
-    for(user of users) {
-      $("<div>").text(user.name).appendTo($("body"));
-    }
-  });;
+//   $.ajax({
+//     method: "GET",
+//     url: "/api/users"
+//   }).done((users) => {
+//     for(user of users) {
+//       $("<div>").text(user.name).appendTo($("body"));
+//     }
+//   });;
