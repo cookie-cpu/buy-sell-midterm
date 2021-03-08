@@ -17,9 +17,8 @@
 
     <section class="items-display">
 
-      <% for(let item in favorites) { %>
+      <% for(let item of favorites) { %>
         <article class="item-listing">
-          <h1>Item ID: <%= item.id %> </h1>
           <h1><%= item.name %> </h1>
           <img src="<%= item.photo_url %>">
           <div>
