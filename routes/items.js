@@ -13,12 +13,18 @@ const router  = express.Router();
 
 module.exports = (db) => {
 
-  router.get("/", (req, res) => {
+  router.get('/new', (req, res) => {
+    res.render('item_new')
+  });
+
+
+
+  router.get('/', (req, res) => {
     db.query(`SELECT * FROM items;`)
       .then(data => {
         console.log('the get / data is: ', data.rows)
         const items = data.rows;
-        res.render("items", {items});
+        res.render('items', {items});
         //res.json({ items });
       })
       .catch(err => {
@@ -30,13 +36,13 @@ module.exports = (db) => {
 
 // READ - view specific item's page ==> GET /items/:id
 
-  router.get("/:id", (req, res) => {
+  router.get('/:id', (req, res) => {
     console.log('the get/:id req.params.id is:', req.params.id);
     db.query(`SELECT * FROM items WHERE id = $1`,[req.params.id])
       .then(data => {
         console.log('the get /:id data is: ', data.rows[0])
         const item = data.rows[0];
-        res.render("item_show", {item});  // make new  item.ejs . no for loop need.
+        res.render('item_show', {item});  // make new  item.ejs . no for loop need.
         //res.json({ items });
       })
       .catch(err => {
@@ -53,7 +59,7 @@ module.exports = (db) => {
   // });
 
 // THIS IS THE EDIT BUTTON ROUTE
-  router.post("/:id", (req, res) => {
+  router.post('/:id', (req, res) => {
     console.log('the post/:id req.params.id is:', req.params.id);
     console.log('req.body is:', req.body);
     console.log('req.body.name is:', req.body['item name']);
@@ -81,10 +87,12 @@ module.exports = (db) => {
 
     // ADD - admin add item  ==> POST /items
 
-  router.post("/", (req, res) => {
+  router.post('/', (req, res) => {
     console.log('req.body is:', req.body)
-    db.query(`INSERT INTO items VALUES $1, $2, $3, $4, $5 RETURNING *;`,
-    [req.body.name, req.body.description, req.body.price, req.body.photo_url, FALSE])
+    db.query(`INSERT INTO items (name, description, price, photo_url, sold)
+     VALUES ($1, $2, $3, $4, $5) RETURNING *;`,
+
+    [req.body['item name'], req.body.description, req.body.price, req.body.photo_url, req.body.sold])
       .then(data => {
         console.log('the post / data is: ', data.rows[0])
         const items = data.rows[0];
