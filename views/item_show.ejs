@@ -36,9 +36,12 @@
         <input type="text" name="price" placeholder="price">
         <input type="text" name="photo_url" placeholder="photo_url">
         <input type="radio" name="sold">
-        <button type="submit" id="b1">Submit Edit</button>
+        <button type="submit">Edit Item</button>
       </div>
     </form>
+    <form method="post" action="/items/<%= item.id %>/delete">
+      <button type="delete">DELETE POST</button>
+   </form>
 
 
     </section>

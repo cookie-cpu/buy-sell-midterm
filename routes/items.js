@@ -91,7 +91,6 @@ module.exports = (db) => {
     console.log('req.body is:', req.body)
     db.query(`INSERT INTO items (name, description, price, photo_url, sold)
      VALUES ($1, $2, $3, $4, $5) RETURNING *;`,
-
     [req.body['item name'], req.body.description, req.body.price, req.body.photo_url, req.body.sold])
       .then(data => {
         console.log('the post / data is: ', data.rows[0])
@@ -116,10 +115,20 @@ module.exports = (db) => {
 
     // DELETE - admin delete item ===> POST /items/:id/delete
 
-    // router.post('/items/:id/delete', (req, res) => {
-    //   db.query
-
-    // });
+    router.post('/:id/delete', (req, res) => {
+      db.query(`DELETE FROM items WHERE id = $1;`,[req.params.id])
+      .then(data => {
+        console.log('the post / data is: ', data.rows[0])
+        //const items = data.rows[0];
+        res.redirect('/items');
+        //res.json({ items });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+    });
 
 
 
