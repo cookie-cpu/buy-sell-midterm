@@ -3,9 +3,9 @@ const router  = express.Router();
 
 module.exports = (db) => {
 
-  router.get('/new', (req, res) => {
-    res.render('item_new')
-  });
+  // router.get('/new', (req, res) => {
+  //   res.render('message_new', {messages} );
+  // });
 
   // BROWSE - view all messages
   router.get('/', (req, res) => {
@@ -25,11 +25,11 @@ module.exports = (db) => {
   // READ - view specific message
   router.get('/:id', (req, res) => {
     console.log('the get/:id req.params.id is:', req.params.id);
-    db.query(`SELECT * FROM messages WHERE id = $1`,[req.params.id])
+    db.query(`SELECT * FROM messages WHERE recipient_id = $1`,[req.params.id])
       .then(data => {
         console.log('the get /:id data is: ', data.rows[0])
-        const message = data.rows[0];
-        res.render('message', {message});
+        const messages = data.rows;
+        res.render('message_show', {messages});
       })
       .catch(err => {
         res
