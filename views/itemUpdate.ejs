@@ -13,22 +13,17 @@
 
   <body>
 
-
-
-
-
-
-
     <form action="/api/items/<%=id%>" method="POST">
       <div>
         <label>Edit your Post</label>
-        <input type="text" name="newURL">
+        <input type="text" name="item name" placeholder="item name">
+        <input type="text" name="description" placeholder="description">
+        <input type="text" name="price" placeholder="price">
+        <input type="text" name="photo_url" placeholder="photo_url">
+        <input type="radio" name="sold">
         <button type="submit">Submit Edit</button>
       </div>
     </form>
-
-
-
 
     <section class="items-display">
 
