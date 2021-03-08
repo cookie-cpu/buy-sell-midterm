@@ -64,6 +64,24 @@ module.exports = (db) => {
       });
   });
 
+  router.post('/:id/delete', (req, res) => {
+    console.log('req.body is:', req.body)
+    db.query(`DELETE FROM favorites
+      WHERE user_id = $1
+      AND item_id = $2;`,
+     [req.session.user_id, req.params.id])
+      .then(data => {
+        console.log('the post / data is: ', data.rows[0])
+        const items = data.rows[0];
+        res.redirect('/items');
+        //res.json({ items });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
 
   router.get('/:id', (req, res) => {
     res.redirect('/favorites')
