@@ -8,12 +8,27 @@
 const express = require('express');
 const router  = express.Router();
 
+
+
+// <!-- GET /users/favorites -->
+// * GET /favorites/:user_id
+
+// # READ - view specific favorite
+// * GET /favorites/:id
+
+// # ADD - create fav connection
+// * POST /favorites
+
+
 module.exports = (db) => {
+
+  // # BROWSE - view all favorite per user
+
   router.get("/", (req, res) => {
-    let query = `
+    let query = (`
     SELECT * FROM favorites
     JOIN items ON item_id = items.id
-     WHERE user_id = 1;`; //add items db using join
+     WHERE user_id = 1;`);
     console.log(query);
     db.query(query)
       .then(data => {
@@ -29,5 +44,28 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+  router.post('/:id', (req, res) => {
+    console.log('req.body is:', req.body)
+    db.query(`INSERT INTO favorites (user_id, item_id)
+     VALUES ($1, $2) RETURNING *;`)
+      .then(data => {
+        console.log('the post / data is: ', data.rows[0])
+        const items = data.rows[0];
+        res.redirect('/items');
+        //res.json({ items });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
+
+
+
+
+
   return router;
 };
