@@ -16,8 +16,7 @@ const router  = express.Router();
 // # READ - view specific favorite
 // * GET /favorites/:id
 
-// # ADD - create fav connection
-// * POST /favorites
+
 
 
 module.exports = (db) => {
@@ -26,7 +25,7 @@ module.exports = (db) => {
 
   router.get("/", (req, res) => {
     let query = (`
-    SELECT * FROM favorites
+    SELECT name, description, price, photo_url, sold FROM favorites
     JOIN items ON item_id = items.id
      WHERE user_id = 1;`);
     console.log(query);
@@ -45,10 +44,13 @@ module.exports = (db) => {
       });
   });
 
+
+    // # ADD - create fav connection
+    // * POST /favorites
   router.post('/:id', (req, res) => {
     console.log('req.body is:', req.body)
     db.query(`INSERT INTO favorites (user_id, item_id)
-     VALUES ($1, $2) RETURNING *;`)
+     VALUES ($1, $2) RETURNING *;`,[req.session.user_id, req.params.id])
       .then(data => {
         console.log('the post / data is: ', data.rows[0])
         const items = data.rows[0];
@@ -61,6 +63,11 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+
+  router.get('/:id', (req, res) => {
+    res.redirect('/favorites')
+  })
 
 
 
