@@ -35,8 +35,8 @@ module.exports = (db) => {
     db.query(`SELECT * FROM items WHERE id = $1`,[req.params.id])
       .then(data => {
         console.log('the get /:id data is: ', data.rows[0])
-        const items = data.rows[0];
-        res.render("items", {items});
+        const item = data.rows[0];
+        res.render("item_singular", {item});  // make new  item.ejs . no for loop need.
         //res.json({ items });
       })
       .catch(err => {
@@ -48,13 +48,14 @@ module.exports = (db) => {
 
 // EDIT - admin edit data ==> POST /items/:id
 
-  router.get("/update", (req, res) => {
-    res.render("itemUpdate")
-  });
+  // router.get("/:id/update", (req, res) => {
+  //   res.render("itemUpdate")
+  // });
 
 
   router.post("/:id", (req, res) => {
     console.log('the post/:id req.params.id is:', req.params.id);
+    console.log('the post/:id req.params.id is:', req.body);
     db.query(`UPDATE items SET name = 'daffodli' WHERE id = $1;`,[req.params.id])
       .then(data => {
         console.log('the post /:id data is: ', data.rows[0])
