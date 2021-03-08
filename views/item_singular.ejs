@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,10 +13,22 @@
   </head>
 
   <body>
-
     <%- include('partials/_nav') %>
 
-    <form action="/api/items/<%=id%>" method="POST">
+    <section class="items-display">
+
+
+  <article class="item-listing">
+    <h1>Item ID: <%= item.id %> </h1>
+    <h1><%= item.name %> </h1>
+    <img src="<%= item.photo_url %>">
+    <div class="item-info">
+      <li><%= item.description %> </li>
+      <li>$ <%= item.price %> </li>
+      <li><%= item.sold %></li>
+    </div>
+
+    <form action="/items/<%= item.id %>" method="POST">
       <div>
         <label>Edit your Post</label>
         <input type="text" name="item name" placeholder="item name">
@@ -23,23 +36,10 @@
         <input type="text" name="price" placeholder="price">
         <input type="text" name="photo_url" placeholder="photo_url">
         <input type="radio" name="sold">
-        <button type="submit">Submit Edit</button>
+        <button type="submit" id="b1">Submit Edit</button>
       </div>
     </form>
 
-    <section class="items-display">
-
-    <article class="item-listing">
-      <h1>Item ID: <%= items.id %> </h1>
-      <h1><%= items.name %> </h1>
-      <img src="<%= items.photo_url %>">
-      <div>
-        <li><%= items.description %> </li>
-        <li>$ <%= items.price %> </li>
-        <li><%= items.sold %></li>
-      </div>
-      <button href="/itemUpdate">EDIT</button>
-    </article>
 
     </section>
 
