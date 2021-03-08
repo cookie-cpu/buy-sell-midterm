@@ -64,6 +64,7 @@ module.exports = (db) => {
       });
   });
 
+  // DELETE
   router.post('/:id/delete', (req, res) => {
     //console.log('req.body is:', req.body)
     db.query(`DELETE FROM favorites
@@ -82,6 +83,8 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+
 
   router.get('/:id', (req, res) => {
     res.redirect('/favorites')
