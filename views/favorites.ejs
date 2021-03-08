@@ -13,21 +13,28 @@
   </head>
 
   <body>
-
     <section class="items-display">
 
-    <article class="item-listing">
-      <h1>Item ID: <%= items.id %> </h1>
-      <h1><%= items.name %> </h1>
-      <img src="<%= items.photo_url %>">
-      <div class="item-info">
-        <li><%= items.description %> </li>
-        <li>$ <%= items.price %> </li>
-        <li><%= items.sold %></li>
-      </div>
-      <button href="/itemUpdate">EDIT</button>
-    </article>
+      <% for(let item in favorites) { %>
+        <article class="item-listing">
+          <h1>Item ID: <%= item.id %> </h1>
+          <h1><%= item.name %> </h1>
+          <img src="<%= item.photo_url %>">
+          <div>
+            <li><%= item.description %> </li>
+            <li>$ <%= item.price %> </li>
+            <li><%= item.sold %></li>
+          </div>
+        </article>
+        <% } %>
 
     </section>
+
+
+
+
+
+
+
 
   </body>

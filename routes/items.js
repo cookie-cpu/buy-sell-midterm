@@ -50,11 +50,11 @@ module.exports = (db) => {
 
   router.post("/:id", (req, res) => {
     console.log('req.params.id is:', req.params.id);
-    db.query(`UPDATE items SET name = 'daffodils WHERE id = 1;`,[req.params.id])
+    db.query(`UPDATE items SET name = 'daffodli' WHERE id = $1;`,[req.params.id])
       .then(data => {
         console.log('the data is: ', data.rows[0])
         const items = data.rows[0];
-        res.send(items);
+        res.redirect('/');
         //res.json({ items });
       })
       .catch(err => {
