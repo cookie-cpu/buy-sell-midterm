@@ -22,7 +22,7 @@ module.exports = (db) => {
   router.get('/', (req, res) => {
     db.query(`SELECT * FROM items;`)
       .then(data => {
-        console.log('the get / data is: ', data.rows)
+        // console.log('the get / data is: ', data.rows)
         const items = data.rows;
         res.render('items', {items});
         //res.json({ items });
@@ -40,7 +40,7 @@ module.exports = (db) => {
     console.log('the get/:id req.params.id is:', req.params.id);
     db.query(`SELECT * FROM items WHERE id = $1`,[req.params.id])
       .then(data => {
-        console.log('the get /:id data is: ', data.rows[0])
+        // console.log('the get /:id data is: ', data.rows[0])
         const item = data.rows[0];
         res.render('item_show', {item});  // make new  item.ejs . no for loop need.
         //res.json({ items });
@@ -65,13 +65,14 @@ module.exports = (db) => {
     console.log('req.body.name is:', req.body['item name']);
     db.query(`
     UPDATE items SET
-    name = $1,
-    description = $2,
-    price = $3,
-    photo_url = $4,
-    sold = $5
-    WHERE id = $6;`
-    ,[req.body['item name'], req.body.description, req.body.price, req.body.photo_url, req.body.sold, req.params.id])
+    user_id = $1,
+    name = $2,
+    description = $3,
+    price = $4,
+    photo_url = $5,
+    sold = $6
+    WHERE id = $7;`
+    ,[req.body['user_id'], req.body['item name'], req.body.description, req.body.price, req.body.photo_url, req.body.sold, req.params.id])
       .then(data => {
         console.log('the post /:id data is: ', data.rows[0])
         const items = data.rows[0];
@@ -89,11 +90,11 @@ module.exports = (db) => {
 
   router.post('/', (req, res) => {
     console.log('req.body is:', req.body)
-    db.query(`INSERT INTO items (name, description, price, photo_url, sold)
-     VALUES ($1, $2, $3, $4, $5) RETURNING *;`,
-    [req.body['item name'], req.body.description, req.body.price, req.body.photo_url, req.body.sold])
+    db.query(`INSERT INTO items (user_id, name, description, price, photo_url, sold)
+     VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;`,
+    [req.body['user_id'], req.body['item name'], req.body.description, req.body.price, req.body.photo_url, req.body.sold])
       .then(data => {
-        console.log('the post / data is: ', data.rows[0])
+        // console.log('the post / data is: ', data.rows[0])
         const items = data.rows[0];
         res.redirect('/items');
         //res.json({ items });
