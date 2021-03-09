@@ -3,18 +3,20 @@ const router  = express.Router();
 
 module.exports = (db) => {
 
+
   // BROWSE - view all messages
   router.get('/', (req, res) => {
     db.query(`
-    SELECT *
+    SELECT users.name as recipient_name, recipient_id, messages.message as message
     FROM messages
+    JOIN users ON users.id = recipient_id
     WHERE sender_id = $1
     ORDER BY timestamp DESC;`, [req.session.user_id])
       .then(data => {
         console.log('the get / data is: ', data.rows)
         console.log('session', req.session.user_id)
-        const messages = data.rows;
-        res.render('messages', {messages, userID:req.session.user_id});  //add recipient name via jOIN with id
+        const messages = data.rows    //.filter(row => {});
+        res.render('messages', {messages, userID:req.session.user_id});
       })
       .catch(err => {
         res
@@ -55,7 +57,6 @@ module.exports = (db) => {
      VALUES ($1, $2, $3) RETURNING *;`,
     [req.session.user_id, req.params.id, req.body.message])
       .then(data => {
-        console.log('the messages[0].recipient_id: ', messages[0].recipient_id)
         res.redirect(`/messages/${req.params.id}`);
       })
       .catch(err => {
