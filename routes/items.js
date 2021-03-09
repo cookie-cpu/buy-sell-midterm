@@ -39,9 +39,9 @@ module.exports = (db) => {
     console.log('the get/:id req.params.id is:', req.params.id);
     db.query(`SELECT * FROM items WHERE id = $1`,[req.params.id])
       .then(data => {
-        // console.log('the get /:id data is: ', data.rows[0])
+        console.log('the get /:id data is: ', data.rows[0])
         const item = data.rows[0];
-        res.render('item_show', {item});  // make new  item.ejs . no for loop need.
+        res.render('item_show', {item, userID:item.user_id});  // make new  item.ejs . no for loop need.
         //res.json({ items });
       })
       .catch(err => {
