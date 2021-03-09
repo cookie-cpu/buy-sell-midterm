@@ -69,7 +69,7 @@ module.exports = (db) => {
     db.query(`DELETE FROM favorites
       WHERE user_id = $1
       AND item_id = $2;`,
-     [1, req.params.id]) //TODO add cookies
+     [req.session.user_id, req.params.id]) //TODO add cookies
       .then(data => {
         console.log('the post / data is: ', data.rows)
         //const items = data.rows[0];
