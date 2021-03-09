@@ -25,7 +25,12 @@ module.exports = (db) => {
   // READ - view specific message
   router.get('/:id', (req, res) => {
     console.log('the get/:id req.params.id is:', req.params.id);
-    db.query(`SELECT * FROM messages WHERE recipient_id = $1`,[req.params.id])
+    db.query(`
+      SELECT *
+      FROM messages
+      WHERE recipient_id = $1
+      ORDER BY timestamp DESC`
+      ,[req.params.id])
       .then(data => {
         console.log('the get /:id data is: ', data.rows[0])
         const messages = data.rows;
