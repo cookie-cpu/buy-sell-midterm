@@ -16,20 +16,18 @@
     <section class="message-display">
       <% for (let message of messages) { %>
       <article class="message-history">
-        <p class="sender_id"><%= message.sender_id %></p>
-        <p class="recipient_id"><%= message.recipient_id %></p>
         <p class="message"><%= message.message %></p>
       </article>
     </section>
+    <% } %>
     <section class="new-message">
-      <form action="/messages" method="POST">
+      <form action="/messages/<%= messages[0].recipient_id %>" method="POST">
         <div>
           <label>Your Message</label>
           <input type="text" name="message" placeholder="Message">
           <button type="submit" id="b1">Send Message</button>
         </div>
       </form>
-      <% } %>
 
     </section>
   </body>

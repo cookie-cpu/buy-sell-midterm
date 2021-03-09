@@ -30,6 +30,7 @@
       </div>
       <form method="GET" action="/items/<%= item.id %>"><button type="submit">edit</button></form>
       <form method="POST" action="/favorites/<%= item.id %>"><button>Fav</button></form>
+      <form method="GET" action="/messages/<%= item.owner_id%>"><button type="submit">Send new message</button></form>
       <!-- <button href="/api/items/update">EDIT</button> -->
     </article>
     <% } %>
