@@ -13,6 +13,9 @@ body {
   width: 100px;
 }
 
+img {
+  width: 200px;
+}
 
 nav {
   background-color: cornflowerblue;
@@ -55,4 +58,11 @@ nav {
   justify-content: space-between;
   align-items: flex-start;
   align-content: stretch;
+}
+
+.item-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
