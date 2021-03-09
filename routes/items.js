@@ -14,10 +14,8 @@ const router  = express.Router();
 module.exports = (db) => {
 
   router.get('/new', (req, res) => {
-    res.render('item_new')
+    res.render('item_new');
   });
-
-
 
   router.get('/', (req, res) => {
     const userID = req.session.user_id
@@ -78,16 +76,15 @@ module.exports = (db) => {
         console.log('the post /:id data is: ', data.rows[0])
         const items = data.rows[0];
         res.redirect('/items');
-        //res.json({ items });
       })
       .catch(err => {
         res
           .status(500)
           .json({ error: err.message });
       });
-    });
+  });
 
-    // ADD - admin add item  ==> POST /items
+  // ADD - admin add item  ==> POST /items
 
   router.post('/', (req, res) => {
     console.log('req.body is:', req.body)
@@ -98,7 +95,6 @@ module.exports = (db) => {
         // console.log('the post / data is: ', data.rows[0])
         const items = data.rows[0];
         res.redirect('/items');
-        //res.json({ items });
       })
       .catch(err => {
         res
@@ -107,18 +103,10 @@ module.exports = (db) => {
       });
   });
 
-
-
-  //
-
-
-
-
-
     // DELETE - admin delete item ===> POST /items/:id/delete
 
-    router.post('/:id/delete', (req, res) => {
-      db.query(`DELETE FROM items WHERE id = $1;`,[req.params.id])
+  router.post('/:id/delete', (req, res) => {
+    db.query(`DELETE FROM items WHERE id = $1;`,[req.params.id])
       .then(data => {
         console.log('the post / data is: ', data.rows[0])
         //const items = data.rows[0];
@@ -130,13 +118,7 @@ module.exports = (db) => {
           .status(500)
           .json({ error: err.message });
       });
-    });
+  });
 
-
-
-
-
-
-
-    return router;
+  return router;
 };
