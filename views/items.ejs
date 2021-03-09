@@ -40,16 +40,23 @@
 
 
     <article class="item-listing">
-      <h1>ID: <%= item.id %> </h1>
-      <h1>Name: <%= item.name %> </h1>
+
+      <h1><%= item.name %> </h1>
       <img src="<%= item.photo_url %>">
       <div class="item-info">
-        <li>Description: <%= item.description %> </li>
+        <li> <%= item.description %> </li>
         <li>$ <%= item.price %> </li>
-        <li>Sold: <%= item.sold %></li>
+        <% if (item.sold) { %>
+        <li>SOLD</li>
+        <% } else { %>
+        <li>AVAILABLE</li>
+         <% } %>
       </div>
-      <form method="GET" action="/items/<%= item.id %>"><button type="submit">edit</button></form>
-      <form method="POST" action="/favorites/<%= item.id %>"><button>Fav</button></form>
+      <div class="item-actions">
+        <form method="GET" action="/items/<%= item.id %>"><button type="submit">edit</button></form>
+        <form method="POST" action="/favorites/<%= item.id %>"><button>Fav</button></form>
+      </div>
+
       <!-- <button href="/api/items/update">EDIT</button> -->
     </article>
     <% } %>
