@@ -27,8 +27,8 @@ module.exports = (db) => {
     let query = (`
     SELECT * FROM favorites
     JOIN items ON item_id = items.id
-    WHERE user_id = 1;`);
-    console.log(query, [req.session.user_id]);
+    `);
+    console.log(query); //TODO add cookie for dynamic userid input
     db.query(query)
       .then(data => {
         console.log(data.rows);
@@ -50,9 +50,9 @@ module.exports = (db) => {
   router.post('/:id', (req, res) => {
     //console.log('req.body is:', req.body)
     db.query(`INSERT INTO favorites (user_id, item_id)
-     VALUES ($1, $2) RETURNING *;`,[req.session.user_id, req.params.id])
+     VALUES ($1, $2) RETURNING *;`,[1, req.params.id])//TODO add user cookie
       .then(data => {
-        //console.log('the post / data is: ', data.rows[0])
+      console.log('the post / data is: ', data.rows)
         //const items = data.rows[0];
         res.redirect('/items');
         //res.json({ items });
@@ -70,9 +70,9 @@ module.exports = (db) => {
     db.query(`DELETE FROM favorites
       WHERE user_id = $1
       AND item_id = $2;`,
-     [req.session.user_id, req.params.id])
+     [1, req.params.id]) //TODO add cookies
       .then(data => {
-       // console.log('the post / data is: ', data.rows[0])
+        console.log('the post / data is: ', data.rows)
         //const items = data.rows[0];
         res.redirect('/favorites');
         //res.json({ items });
