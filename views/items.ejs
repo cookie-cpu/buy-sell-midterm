@@ -16,20 +16,8 @@
     <%- include('partials/_nav') %>
 
     <section class="items-display">
-<!--
-<% if (items.length === 1) { %>
-  <article class="item-listing">
-    <h1>Item ID: <%= items.id %> </h1>
-    <h1><%= items.name %> </h1>
-    <img src="<%= items.photo_url %>">
-    <div class="items-info">
-      <li><%= items.description %> </li>
-      <li>$ <%= items.price %> </li>
-      <li><%= items.sold %></li>
-    </div>
-    <% } %> -->
 
-<!-- <% if (items.length > 1) { %> -->
+
       <% for (let item of items) { %>
     <article class="item-listing">
       <h1>ID: <%= item.id %> </h1>
@@ -44,7 +32,7 @@
       <!-- <button href="/api/items/update">EDIT</button> -->
     </article>
     <% } %>
-<!-- <% } %> -->
+
 
     </section>
 

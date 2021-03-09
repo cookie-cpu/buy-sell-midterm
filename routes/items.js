@@ -20,11 +20,12 @@ module.exports = (db) => {
 
 
   router.get('/', (req, res) => {
+    const userID = req.session.user_id
     db.query(`SELECT * FROM items;`)
       .then(data => {
-        // console.log('the get / data is: ', data.rows)
+        console.log('the get / data is: ', data)
         const items = data.rows;
-        res.render('items', {items});
+        res.render('items', {items, userID});
         //res.json({ items });
       })
       .catch(err => {

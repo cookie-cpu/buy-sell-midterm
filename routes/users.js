@@ -13,14 +13,17 @@ module.exports = (db) => {
   // BROWSE - view all items listed by a specific user ==> GET  /items/:user_id (JOIN users ON users.id = user_id, GROUP BY items.id)
 
   router.get("/:user_id", (req, res) => {
+    const userID = parseInt(req.session.user_id, 10)
+    console.log('userid', userID)
     db.query(`
-    SELECT * FROM items
-    WHERE user_id = $1;
-    `, [req.params.user_id])
-    console.log('USERS BROWSE GET - req.params.user_id',req.params.user_id)
+    SELECT * FROM items WHERE user_id = $1;
+    `, [userID])
       .then(data => {
+        console.log('data on line 23', data)
         const items = data.rows;
-        res.render('items', {items});
+        console.log('items length', items.length)
+        console.log('userID', userID)
+        res.render('items', {items: items, userID});
         // res.json({ users });
       })
       .catch(err => {
