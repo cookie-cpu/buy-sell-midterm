@@ -24,13 +24,13 @@
 # BROWSE - view all items listed by a specific user
 * GET  /items/:user_id 
 
-# READ - view specific item listed by a specific user
-* GET  /items/:user_id/:id 
+<!-- # READ - view specific item listed by a specific user
+* GET  /items/:user_id/:id  -->
 
 ## MY FAVORITES
 
 # BROWSE - view all favorite per user
-<!-- GET /users/favorites -->
+
 * GET /favorites/:user_id
 
 # READ - view specific favorite

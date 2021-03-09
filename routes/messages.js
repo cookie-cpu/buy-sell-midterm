@@ -3,17 +3,19 @@ const router  = express.Router();
 
 module.exports = (db) => {
 
+
   // BROWSE - view all messages
   router.get('/', (req, res) => {
     db.query(`
-    SELECT *
+    SELECT users.name as recipient_name, recipient_id, messages.message as message
     FROM messages
+    JOIN users ON users.id = recipient_id
     WHERE sender_id = $1
     ORDER BY timestamp DESC;`, [req.session.user_id])
       .then(data => {
-        // console.log('the get / data is: ', data.rows)
-        // console.log('session', req.session.user_id)
-        const messages = data.rows;
+        console.log('the get / data is: ', data.rows)
+        console.log('session', req.session.user_id)
+        const messages = data.rows    //.filter(row => {});
         res.render('messages', {messages, userID:req.session.user_id});
       })
       .catch(err => {
@@ -31,7 +33,7 @@ module.exports = (db) => {
       FROM messages
       WHERE sender_id = $1
       AND recipient_id = $2
-      ORDER BY timestamp DESC`
+      ORDER BY timestamp`
       ,[req.session.user_id, req.params.id])
       .then(data => {
         // console.log('the get /:id data is: ', data.rows[0])
@@ -46,16 +48,15 @@ module.exports = (db) => {
   });
 
   // ADD - message
-  router.post('/', (req, res) => {
-    // console.log('req.body is:', req.body)
-    db.query(`INSERT INTO messages (sender_id, recipient_id, message)
+  router.post('/:id', (req, res) => {
+    console.log('req.body.recipient is:', req.body.recipient_id)
+    console.log('req.params.id is ', req.params.id)
+    db.query(`
+    INSERT INTO messages (sender_id, recipient_id, message)
      VALUES ($1, $2, $3) RETURNING *;`,
-    [req.body.message])  // req.body.sender_id, req.body.recipient_id, aren't being passed thru. removed for now. tried adding req.params.id, but didn't work
+    [req.session.user_id, req.params.id, req.body.message])
       .then(data => {
-        // console.log('the post / data is: ', data.rows[0])
-        const message = data.rows[0];
-        res.redirect('/messages');
-        // res.redirect('/messages/:id'); // change to messages/:id ? so it returns to the specific msg history
+        res.redirect(`/messages/${req.params.id}`);
       })
       .catch(err => {
         res
