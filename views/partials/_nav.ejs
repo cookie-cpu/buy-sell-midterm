@@ -6,9 +6,9 @@
     <a href="/items">Items Page</a>
     <a href="/favorites">My Favorites</a>
     <a href="/items/new">Create Listing</a>
-
-      <a>My Listings</a>
-
+    <% if(userID) { %>
+      <a href="/users/<%= userID %>">My Listings</a>
+    <% }%>
     <a href="/messages">My Messages</a>
     <h5>Logged in as USERNAME</h5>
   </nav>
