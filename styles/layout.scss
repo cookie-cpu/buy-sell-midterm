@@ -1,7 +1,7 @@
 // See: https://sass-lang.com/
 
 body {
-  margin-top: 100px;
+  margin-top: 70px;
   background-color: white;
 
   h1 {
@@ -14,9 +14,13 @@ body {
 }
 
 img {
-  width: 200px;
+  width: 300px;
 }
-
+img:hover {
+  -ms-transform: scale(2.5); /* IE 9 */
+  -webkit-transform: scale(2.5); /* Safari 3-8 */
+  transform: scale(2.5);
+}
 nav {
   background-color: cornflowerblue;
   display: flex;
@@ -33,7 +37,7 @@ nav {
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .item-listing {
