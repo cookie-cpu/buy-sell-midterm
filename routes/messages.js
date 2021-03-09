@@ -47,19 +47,16 @@ module.exports = (db) => {
   });
 
   // ADD - message
-  // router.post('/', (req, res) => {
-  router.post('/:id', (req, res) => {   // tried change route to /:id but broke route. how to incorporate req.params.id?
+  router.post('/:id', (req, res) => {
     console.log('req.body.recipient is:', req.body.recipient_id)
     console.log('req.params.id is ', req.params.id)
     db.query(`
     INSERT INTO messages (sender_id, recipient_id, message)
      VALUES ($1, $2, $3) RETURNING *;`,
-    [req.session.user_id, req.params.id, req.body.message])  // req.body.sender_id, req.session.user_id, aren't being passed thru. removed for now. tried adding req.params.id, but didn't work
+    [req.session.user_id, req.params.id, req.body.message])
       .then(data => {
-        console.log('the post / data is: ', data.rows[0])
-        const message = data.rows[0];  // not being called. delete?
-        // res.redirect('/messages');
-        res.redirect(`/messages/${req.params.id}`); // change to messages/:id ? so it returns to the specific msg history
+        console.log('the messages[0].recipient_id: ', messages[0].recipient_id)
+        res.redirect(`/messages/${req.params.id}`);
       })
       .catch(err => {
         res
