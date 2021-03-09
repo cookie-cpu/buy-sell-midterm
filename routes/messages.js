@@ -12,8 +12,9 @@ module.exports = (db) => {
     db.query(`SELECT * FROM messages;`)
       .then(data => {
         console.log('the get / data is: ', data.rows)
+        console.log('session', req.session.user_id)
         const messages = data.rows;
-        res.render('messages', {messages});
+        res.render('messages', {messages, userID:req.session.user_id});
       })
       .catch(err => {
         res
@@ -34,7 +35,7 @@ module.exports = (db) => {
       .then(data => {
         console.log('the get /:id data is: ', data.rows[0])
         const messages = data.rows;
-        res.render('message_show', {messages});
+        res.render('message_show', {messages, userID:req.session.user_id});
       })
       .catch(err => {
         res

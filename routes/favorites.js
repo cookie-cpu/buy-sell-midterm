@@ -24,16 +24,21 @@ module.exports = (db) => {
   // # BROWSE - view all favorite per user
 
   router.get("/", (req, res) => {
-    let query = (`
+    // console.log('query and req.session.user_id', query, [req.session.user_id]);
+    db.query( `
     SELECT * FROM favorites
     JOIN items ON item_id = items.id
+<<<<<<< HEAD
+    WHERE favorites.user_id = $1;`, [req.session.user_id])
+=======
     `);
     console.log(query); //TODO add cookie for dynamic userid input
     db.query(query)
+>>>>>>> a951a94c46874bba2301ed12654589d7f1e2c0b5
       .then(data => {
-        console.log(data.rows);
+        console.log('data rows', data.rows);
         const favorites = data.rows;
-        res.render("favorites", {favorites});
+        res.render("favorites", {favorites, userID:req.session.user_id});
         //res.json({ items });
         //res.json({ favorites });
       })

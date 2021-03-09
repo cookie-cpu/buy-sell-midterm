@@ -10,11 +10,11 @@ const router  = express.Router();
 
 module.exports = (db) => {
 
-  // BROWSE - view all items listed by a specific user ==> GET  /items/:user_id (JOIN users ON users.id = user_id, GROUP BY items.id)
+  // BROWSE - view all items listed by a specific user ==> GET  /items/:user_id
 
   router.get("/:user_id", (req, res) => {
     const userID = parseInt(req.session.user_id, 10)
-    console.log('userid', userID)
+    // console.log('userid', userID)
     db.query(`
     SELECT * FROM items WHERE user_id = $1;
     `, [userID])
@@ -32,32 +32,6 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
-
-
-
-  // READ - view specific item listed by a specific user ==> GET  /items/:user_id/:id
-
-  // router.get("/:user_id", (req, res) => {
-  //   db.query(`
-  //   SELECT * FROM items
-  //   JOIN users ON users.id = user_id
-  //   WHERE users.id = $1;
-  //   GROUP BY items.id`, [req.params.id])
-  //     .then(data => {
-  //       const items = data.rows;
-  //       res.render('items', {items});
-  //       // res.json({ users });
-  //     })
-  //     .catch(err => {
-  //       res
-  //         .status(500)
-  //         .json({ error: err.message });
-  //     });
-  // });
-
-
-
-
 
 
 
