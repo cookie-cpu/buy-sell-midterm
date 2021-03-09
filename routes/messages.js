@@ -8,12 +8,13 @@ module.exports = (db) => {
     db.query(`
     SELECT *
     FROM messages
-    WHERE sender_id = 2
-    ORDER BY timestamp DESC;`) //sender_id is hardcoded. this needs to change to use cookies?
+    WHERE sender_id = $1
+    ORDER BY timestamp DESC;`, [req.session.user_id])
       .then(data => {
         console.log('the get / data is: ', data.rows)
+        console.log('session is: ', req.session.user_id);
         const messages = data.rows;
-        res.render('messages', {messages});
+        res.render('messages', {messages, userID:req.session.user_id});
       })
       .catch(err => {
         res
@@ -28,14 +29,15 @@ module.exports = (db) => {
     db.query(`
       SELECT *
       FROM messages
-      WHERE sender_id = 2
-      AND recipient_id = $1
-      ORDER BY timestamp DESC` //sender_id is hardcoded. this needs to change to use cookies?
-      ,[req.params.id])
+      WHERE sender_id = $1
+      AND recipient_id = $2
+      ORDER BY timestamp DESC` 
+      ,[req.session.user_id, req.params.id])
       .then(data => {
         console.log('the get /:id data is: ', data.rows[0])
+        console.log('session is: ', req.session.user_id);
         const messages = data.rows;
-        res.render('message_show', {messages});
+        res.render('message_show', {messages, userID:req.session.user_id});
       })
       .catch(err => {
         res
