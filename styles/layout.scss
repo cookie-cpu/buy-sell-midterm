@@ -78,6 +78,10 @@ nav {
   align-items: center;
   background-color: lightgray;
 }
-.search-items-form__field-wrapper{
-  background-color:green
+.search-button {
+   padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
