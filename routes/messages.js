@@ -11,8 +11,8 @@ module.exports = (db) => {
     WHERE sender_id = $1
     ORDER BY timestamp DESC;`, [req.session.user_id])
       .then(data => {
-        console.log('the get / data is: ', data.rows)
-        console.log('session', req.session.user_id)
+        // console.log('the get / data is: ', data.rows)
+        // console.log('session', req.session.user_id)
         const messages = data.rows;
         res.render('messages', {messages, userID:req.session.user_id});  //add recipient name via jOIN with id
       })
@@ -25,7 +25,7 @@ module.exports = (db) => {
 
   // READ - view specific message
   router.get('/:id', (req, res) => {
-    console.log('the get/:id req.params.id is:', req.params.id);
+    // console.log('the get/:id req.params.id is:', req.params.id);
     db.query(`
       SELECT *
       FROM messages
@@ -34,8 +34,7 @@ module.exports = (db) => {
       ORDER BY timestamp`
       ,[req.session.user_id, req.params.id])
       .then(data => {
-        console.log('the get /:id data is: ', data.rows[0])
-        console.log('session is: ', req.session.user_id);
+        // console.log('the get /:id data is: ', data.rows[0])
         const messages = data.rows;
         res.render('message_show', {messages, userID:req.session.user_id});
       })

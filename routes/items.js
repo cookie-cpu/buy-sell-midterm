@@ -21,7 +21,7 @@ module.exports = (db) => {
     const userID = req.session.user_id
     db.query(`SELECT * FROM items;`)
       .then(data => {
-        console.log('the get / data is: ', data)
+        // console.log('the get / data is: ', data)
         const items = data.rows;
         res.render('items', {items, userID});
         //res.json({ items });
@@ -36,10 +36,10 @@ module.exports = (db) => {
 // READ - view specific item's page ==> GET /items/:id
 
   router.get('/:id', (req, res) => {
-    console.log('the get/:id req.params.id is:', req.params.id);
+    // console.log('the get/:id req.params.id is:', req.params.id);
     db.query(`SELECT * FROM items WHERE id = $1`,[req.params.id])
       .then(data => {
-        console.log('the get /:id data is: ', data.rows[0])
+        // console.log('the get /:id data is: ', data.rows[0])
         const item = data.rows[0];
         res.render('item_show', {item, userID:item.user_id});  // make new  item.ejs . no for loop need.
         //res.json({ items });
@@ -59,9 +59,9 @@ module.exports = (db) => {
 
 // THIS IS THE EDIT BUTTON ROUTE
   router.post('/:id', (req, res) => {
-    console.log('the post/:id req.params.id is:', req.params.id);
-    console.log('req.body is:', req.body);
-    console.log('req.body.name is:', req.body['item name']);
+    // console.log('the post/:id req.params.id is:', req.params.id);
+    // console.log('req.body is:', req.body);
+    // console.log('req.body.name is:', req.body['item name']);
     db.query(`
     UPDATE items SET
     user_id = $1,
@@ -73,7 +73,7 @@ module.exports = (db) => {
     WHERE id = $7;`
     ,[req.body['user_id'], req.body['item name'], req.body.description, req.body.price, req.body.photo_url, req.body.sold, req.params.id])
       .then(data => {
-        console.log('the post /:id data is: ', data.rows[0])
+        // console.log('the post /:id data is: ', data.rows[0])
         const items = data.rows[0];
         res.redirect('/items');
       })
@@ -87,7 +87,7 @@ module.exports = (db) => {
   // ADD - admin add item  ==> POST /items
 
   router.post('/', (req, res) => {
-    console.log('req.body is:', req.body)
+    // console.log('req.body is:', req.body)
     db.query(`INSERT INTO items (user_id, name, description, price, photo_url, sold)
      VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;`,
     [req.body['user_id'], req.body['item name'], req.body.description, req.body.price, req.body.photo_url, req.body.sold])
@@ -108,7 +108,7 @@ module.exports = (db) => {
   router.post('/:id/delete', (req, res) => {
     db.query(`DELETE FROM items WHERE id = $1;`,[req.params.id])
       .then(data => {
-        console.log('the post / data is: ', data.rows[0])
+        // console.log('the post / data is: ', data.rows[0])
         //const items = data.rows[0];
         res.redirect('/items');
         //res.json({ items });
