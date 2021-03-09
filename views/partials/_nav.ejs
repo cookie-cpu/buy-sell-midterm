@@ -4,12 +4,12 @@
 
     <a href="/">Home</a>
     <a href="/items">Items Page</a>
-    <a href="/favorites">My Favorites</a>
-    <a href="/items/new">Create Listing</a>
     <% if(userID) { %>
+      <a href="/favorites">My Favorites</a>
+      <a href="/items/new">Create Listing</a>
       <a href="/users/<%= userID %>">My Listings</a>
+      <a href="/messages">My Messages</a>
     <% }%>
-    <a href="/messages">My Messages</a>
     <h5>Logged in as USERNAME</h5>
   </nav>
 </header>

@@ -24,16 +24,15 @@ module.exports = (db) => {
   // # BROWSE - view all favorite per user
 
   router.get("/", (req, res) => {
-    let query = (`
+    // console.log('query and req.session.user_id', query, [req.session.user_id]);
+    db.query( `
     SELECT * FROM favorites
     JOIN items ON item_id = items.id
-    WHERE user_id = 1;`);
-    console.log(query, [req.session.user_id]);
-    db.query(query)
+    WHERE favorites.user_id = $1;`, [req.session.user_id])
       .then(data => {
-        console.log(data.rows);
+        console.log('data rows', data.rows);
         const favorites = data.rows;
-        res.render("favorites", {favorites});
+        res.render("favorites", {favorites, userID:req.session.user_id});
         //res.json({ items });
         //res.json({ favorites });
       })
