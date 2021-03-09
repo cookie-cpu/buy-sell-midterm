@@ -15,10 +15,30 @@
   <body>
     <%- include('partials/_nav') %>
 
+    <section>
+      <form action="/items/search/price" method="POST" id="search-items-form" class="search-items-form">
+
+        <div class="search-items-form__field-wrapper">
+          <label for="search-items-form__minimum-price-per-item">Minimum Cost</label>
+          <input type="number" name="minimum_price_per_item" placeholder="Minimum Cost" id="search-items-form__minimum-price-per-item">
+          <label for="search-items-form__maximum-price-per-item">Maximum Cost</label>
+          <input type="number" name="maximum_price_per_item" placeholder="Maximum Cost" id="search-items-form__maximum-price-per-item">
+        </div>
+
+        <div class="search-items-form__field-wrapper">
+          <button>Search</button>
+        </div>
+
+      </form>
+
+    </section>
+
     <section class="items-display">
 
 
       <% for (let item of items) { %>
+
+
     <article class="item-listing">
       <h1>ID: <%= item.id %> </h1>
       <h1>Name: <%= item.name %> </h1>
