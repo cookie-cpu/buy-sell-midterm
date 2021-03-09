@@ -35,7 +35,7 @@ module.exports = (db) => {
       .then(data => {
         console.log('the get /:id data is: ', data.rows[0])
         const messages = data.rows;
-        res.render('message_show', {messages});
+        res.render('message_show', {messages, userID:req.session.user_id});
       })
       .catch(err => {
         res
