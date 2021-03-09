@@ -8,8 +8,8 @@
 //   console.log('click');
 
 //   $.ajax({
-//     method: 'GET',
-//     url: '/items'
+//     method: 'POST',
+//     url: '/messages/:id'
 //   }).done((res) => {
 //     console.log(res);
 //     $('ul').empty();

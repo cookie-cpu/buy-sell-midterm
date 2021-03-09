@@ -31,7 +31,7 @@ module.exports = (db) => {
       FROM messages
       WHERE sender_id = $1
       AND recipient_id = $2
-      ORDER BY timestamp DESC` 
+      ORDER BY timestamp DESC`
       ,[req.session.user_id, req.params.id])
       .then(data => {
         console.log('the get /:id data is: ', data.rows[0])
@@ -52,8 +52,8 @@ module.exports = (db) => {
     console.log('req.body is:', req.body)
     console.log('req.params.id is ', req.params.id)
     db.query(`
-    INSERT INTO messages (message)
-     VALUES ($1) RETURNING *;`,
+    INSERT INTO messages (sender_id, recipient_id, message)
+     VALUES ($1, $2, $3) RETURNING *;`,
     [req.body.message])  // req.body.sender_id, req.body.recipient_id, aren't being passed thru. removed for now. tried adding req.params.id, but didn't work
       .then(data => {
         console.log('the post / data is: ', data.rows[0])
