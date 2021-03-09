@@ -30,7 +30,7 @@ module.exports = (db) => {
     JOIN items ON item_id = items.id
     WHERE favorites.user_id = $1;`, [req.session.user_id])
       .then(data => {
-        console.log('data rows', data.rows);
+        // console.log('data rows', data.rows);
         const favorites = data.rows;
         res.render("favorites", {favorites, userID:req.session.user_id});
         //res.json({ items });
@@ -51,7 +51,7 @@ module.exports = (db) => {
     db.query(`INSERT INTO favorites (user_id, item_id)
      VALUES ($1, $2) RETURNING *;`,[req.session.user_id, req.params.id])//TODO add user cookie
       .then(data => {
-      console.log('the post / data is: ', data.rows)
+      // console.log('the post / data is: ', data.rows)
         //const items = data.rows[0];
         res.redirect('/items');
         //res.json({ items });
@@ -71,7 +71,7 @@ module.exports = (db) => {
       AND item_id = $2;`,
      [req.session.user_id, req.params.id]) //TODO add cookies
       .then(data => {
-        console.log('the post / data is: ', data.rows)
+        // console.log('the post / data is: ', data.rows)
         //const items = data.rows[0];
         res.redirect('/favorites');
         //res.json({ items });

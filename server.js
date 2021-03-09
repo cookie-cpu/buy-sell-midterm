@@ -43,6 +43,7 @@ const widgetsRoutes = require("./routes/widgets");
 const itemsRoutes = require("./routes/items");
 const favoritesRoutes = require("./routes/favorites");
 const messagesRoutes = require("./routes/messages");
+const searchRoutes = require("./routes/search")
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -50,6 +51,7 @@ app.use("/users", usersRoutes(db));
 app.use("/items", itemsRoutes(db));
 app.use("/favorites", favoritesRoutes(db))
 app.use("/messages", messagesRoutes(db))
+app.use("/items/search", searchRoutes(db))
 app.use("/api/widgets", widgetsRoutes(db));
 
 // Note: mount other resources here, using the same pattern above
@@ -59,8 +61,8 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  const userID = req.session.user_id
-  res.render("index", {userID});
+  // const userID = req.session.user_id
+  res.redirect('/items');
 });
 
 // User login route
