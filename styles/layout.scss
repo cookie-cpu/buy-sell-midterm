@@ -2,8 +2,8 @@
 
 body {
   font-family: 'Courier New', Courier, monospace;
-  margin-top: 70px;
-  background-color: white;
+  margin-top: 90px;
+  background-color: gray;
 
   h1 {
     color: #244751;
@@ -11,7 +11,7 @@ body {
 }
 
 #logo {
-  width: 100px;
+  width: 120px;
 }
 
 img {
@@ -25,7 +25,10 @@ img {
 // }
 
 nav {
-  background-color: cornflowerblue;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  background-color: rgba(0, 0, 0, 0.9);
   display: flex;
   align-items: center;
   justify-content: space-around;
