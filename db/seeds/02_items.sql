@@ -1,7 +1,7 @@
 INSERT INTO items (user_id, name, description, price, photo_url, sold)
-VALUES (4, 'daisies', 'bright and cheerful', 5, 'photo_url', FALSE),
-(4, 'forget-me-nots', 'small, dainty, purple', 7, 'photo_url', FALSE),
-(5, 'lilac', 'purple fragrant', 20, 'photo_url', FALSE),
-(5, 'lillies','they are very nice', 10, 'photo_url', FALSE),
-(5, 'roses','they are very red', 15, 'photo_url', FALSE),
-(5, 'marigold','vibrant orange color', 10, 'photo_url', FALSE);
+VALUES (4, 'The Loopy', 'bright and cheerful', 999, 'https://i.imgur.com/cnpWUCe.jpg', FALSE),
+(4, 'The Eye', 'small, dainty, purple', 555, 'https://i.imgur.com/Bji47Hr.jpg', FALSE),
+(5, 'The Tadpole', 'purple fragrant', 222, 'https://i.imgur.com/P3gJqD6.png', FALSE),
+(5, 'The Sombrero','they are very nice', 3333, 'https://i.imgur.com/XE7i9Q2.jpg', FALSE),
+(5, 'The Cigar','they are very red', 4321, 'https://i.imgur.com/xzZz3Cl.jpg', FALSE),
+(5, 'The Whirlpool','vibrant orange color', 123, 'https://i.imgur.com/7n9wQZI.jpg', FALSE);
