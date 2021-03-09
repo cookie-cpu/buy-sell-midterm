@@ -1,6 +1,7 @@
 // See: https://sass-lang.com/
 
 body {
+  font-family: 'Courier New', Courier, monospace;
   margin-top: 70px;
   background-color: white;
 
@@ -16,11 +17,13 @@ body {
 img {
   width: 300px;
 }
-img:hover {
-  -ms-transform: scale(2.5); /* IE 9 */
-  -webkit-transform: scale(2.5); /* Safari 3-8 */
-  transform: scale(2.5);
-}
+
+// img:hover {
+//   -ms-transform: scale(2.5); /* IE 9 */
+//   -webkit-transform: scale(2.5); /* Safari 3-8 */
+//   transform: scale(2.5);
+// }
+
 nav {
   background-color: cornflowerblue;
   display: flex;
@@ -35,9 +38,9 @@ nav {
   background-color: gray;
   width: 100%;
   display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .item-listing {
@@ -46,7 +49,7 @@ nav {
   padding: 12px;
   width: 100%;
   max-width: 500px;
-  height: 400px;
+  height: 450px;
   border: 2px solid black;
   box-sizing: border-box;
   display: flex;
@@ -57,7 +60,11 @@ nav {
 }
 .item-listing:hover{
   box-shadow: 8px 8px rgb(10, 88, 114);
+  -ms-transform: scale(1.2); /* IE 9 */
+  -webkit-transform: scale(1.2); /* Safari 3-8 */
+  transform: scale(1.2);
 }
+
 
 .item-info {
   display: flex;
@@ -68,10 +75,12 @@ nav {
 }
 
 .item-actions {
+
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  padding-bottom: 5px;
 }
 
 .search-bar {
