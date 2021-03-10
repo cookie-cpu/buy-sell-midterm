@@ -201,9 +201,9 @@ hr {width: 100%;
 }
 
 .msg-body {
-  background-color: green;
   display: flex;
   align-items: center;
+  background-color: lightgray;
 }
 
 .message-history {
@@ -231,7 +231,7 @@ hr {width: 100%;
     /* padding: 5em; */
     margin: 7em;
     border: black 2px solid;
-    background-color: lightgray;
+    background-color: whitesmoke;
 }
 
 .message-history-1-on-1 {
@@ -250,4 +250,8 @@ hr {width: 100%;
 .message {
    display: flex;
    align-items: center;
+ }
+
+ .msgs-with {
+   font-size: 25px;
  }

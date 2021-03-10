@@ -16,7 +16,9 @@
     <%- include('partials/_nav') %>
     <section class="message-display-1-on-1">
       <% for (let message of messages) { %>
+        <p class="msgs-with">Messages with <%= message.name %></p>
       <article class="message-history-1-on-1">
+        <p class="timestamp"><%= message.timestamp %></p>
         <p class="message"><%= message.message %></p>
       </article>
 
