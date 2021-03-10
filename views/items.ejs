@@ -14,24 +14,7 @@
 
   <body>
     <%- include('partials/_nav') %>
-
-    <section class="search-bar">
-      <form action="/items/search/price" method="POST" id="search-items-form" class="search-items-form">
-
-        <div class="search-items-form__field-wrapper">
-          <label for="search-items-form__minimum-price-per-item">Minimum Cost</label>
-          <input type="number" name="minimum_price_per_item" placeholder="Minimum Cost" id="search-items-form__minimum-price-per-item">
-          <label for="search-items-form__maximum-price-per-item">Maximum Cost</label>
-          <input type="number" name="maximum_price_per_item" placeholder="Maximum Cost" id="search-items-form__maximum-price-per-item">
-        </div>
-
-        <div class="search-button">
-          <button>Search</button>
-        </div>
-
-      </form>
-
-    </section>
+    <%- include('partials/_search') %>
 
     <section class="items-display">
 
@@ -54,7 +37,7 @@
       </div>
       <div class="item-actions">
         <form method="GET" action="/items/<%= item.id %>"><button type="submit">edit</button></form>
-        <form method="POST" action="/favorites/<%= item.id %>"><button>Fav</button></form>
+        <form method="POST" action="/favorites/<%= item.id %>" id="fav-button"><button>Fav</button></form>
         <form method="GET" action="/messages/<%= item.owner_id%>"><button type="submit">Send new message</button></form>
       </div>
 
