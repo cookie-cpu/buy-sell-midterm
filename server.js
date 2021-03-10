@@ -64,6 +64,7 @@ app.get("/", (req, res) => {
   //res.render("index", {userID:req.session.user_id});
   const userID = req.session.user_id
   const featuredPosts = [(Math.floor(Math.random() * 10) + 1),(Math.floor(Math.random() * 10) + 1),(Math.floor(Math.random() * 10) + 1)];
+  console.log(`Today's featuredPosts IDs are ${featuredPosts}`)
   db.query(`
   SELECT * FROM items
   WHERE id = $1
