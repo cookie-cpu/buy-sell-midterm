@@ -175,3 +175,57 @@ hr {width: 100%;
   justify-content: center;
   flex-direction: column;
 }
+
+.messages-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5em;
+
+}
+
+#message-inbox {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.message-history {
+  padding: 1em;
+  border: black 2px solid;
+  margin: 1em;
+  width: 100%;
+  word-break: break-word;
+  transition: transform .2s;
+  background-color: lightgray;
+}
+
+.message-history:hover {
+  box-shadow: 8px 8px #0a5872;
+  transform: scale(1.1);
+}
+
+.message-display-1-on-1 {
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: 80%;
+    /* padding: 5em; */
+    margin: 7em;
+    border: black 2px solid;
+    background-color: lightgray;
+}
+
+.message-history-1-on-1 {
+  padding: 1em;
+  /* border: black 2px solid; */
+  margin: 1em;
+  width: 100%;
+  word-break: break-word;
+}
+
+.new-message {
+  padding: 16px;
+  margin: 16px;
+}
