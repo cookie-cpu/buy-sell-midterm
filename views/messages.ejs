@@ -19,9 +19,9 @@
       <% for (let message of messages) { %>
         <article class="message-history">
           <p class="sender_id"><%= message.sender_id %></p>
-          <p class="recipient_id"><%= message.recipient_name %></p>
-          <p class="message"><%= message.message%></p>
-          <form method="GET" action="/messages/<%= message.recipient_id %>"><button type="submit">Send new message</button></form>
+          <p class="recipient_id">Messages with: <%= message.recipient_name %></p>
+          <p class="message">Last message: <%= message.message%></p>
+          <form method="GET" action="/messages/<%= message.recipient_id %>"><button type="submit">View Chat</button></form>
         </article>
         <% } %>
 
