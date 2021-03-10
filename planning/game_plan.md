@@ -19,7 +19,7 @@
 * [x] Display specific item(s) (search result) 
 * [x] Favorite that item
 * [x] Display users favorites
-* [] Message the seller
+* [x] Message the seller
 * [x] change item(s) SOLD status
 * [x] List new item
 * [x] Edit product status
