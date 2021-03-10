@@ -52,17 +52,9 @@
         <li>AVAILABLE</li>
          <% } %>
       </div>
-<<<<<<< HEAD
       <form method="GET" action="/items/<%= item.id %>"><button type="submit">edit</button></form>
       <form method="POST" action="/favorites/<%= item.id %>"><button>Fav</button></form>
       <form method="GET" action="/messages/<%= item.owner_id%>"><button type="submit">Send new message</button></form>
-=======
-      <div class="item-actions">
-        <form method="GET" action="/items/<%= item.id %>"><button type="submit">edit</button></form>
-        <form method="POST" action="/favorites/<%= item.id %>"><button>Fav</button></form>
-      </div>
-
->>>>>>> 42299c2f4b0551454f7230a5633a5f595fb3e5e2
       <!-- <button href="/api/items/update">EDIT</button> -->
     </article>
     <% } %>

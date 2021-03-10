@@ -7,11 +7,15 @@ module.exports = (db) => {
   // BROWSE - view all messages
   router.get('/', (req, res) => {
     db.query(`
-    SELECT users.name as recipient_name, recipient_id, messages.message as message
-    FROM messages
-    JOIN users ON users.id = recipient_id
-    WHERE sender_id = $1
-    ORDER BY timestamp DESC;`, [req.session.user_id])
+    SELECT U1.name as recipient_name, subquery.recipient_id as recipient_id, M1.message as message
+    from messages as M1
+    inner join
+      (select recipient_id, max(id) as msg_id
+      from messages
+      where sender_id = $1
+      group by recipient_id) as subquery ON M1.id = subquery.msg_id
+    inner join users as U1 ON U1.id = subquery.recipient_id;
+    `, [req.session.user_id])
       .then(data => {
         console.log('the get / data is: ', data.rows)
         console.log('session', req.session.user_id)
@@ -27,7 +31,6 @@ module.exports = (db) => {
 
   // READ - view specific message
   router.get('/:id', (req, res) => {
-    // console.log('the get/:id req.params.id is:', req.params.id);
     db.query(`
       SELECT *
       FROM messages
