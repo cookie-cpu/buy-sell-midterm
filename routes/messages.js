@@ -1,5 +1,7 @@
 const express = require('express');
 const router  = express.Router();
+const moment = require('moment');
+
 
 module.exports = (db) => {
 
@@ -33,7 +35,7 @@ module.exports = (db) => {
   // READ - view specific message
   router.get('/:id', (req, res) => {
     db.query(`
-      SELECT users.name as name, timestamp, message
+      SELECT users.name as name, timestamp, message, recipient_id
       FROM messages
       JOIN users ON users.id = recipient_id
       WHERE sender_id = $1
@@ -42,7 +44,16 @@ module.exports = (db) => {
       ,[req.session.user_id, req.params.id])
       .then(data => {
         console.log('the get /:id data is: ', data.rows[0])
-        const messages = data.rows;
+        const messages = data.rows.map(message => {
+          const timestamp = moment(message.timestamp).format('YYYY-MM-DD hh:mm A');
+          return { ...message, timestamp };
+          //   name: message.name,
+          //   message: message.message,
+          //   recipient_id: message.recipient_id,
+          //   timestamp: timestamp
+          // }
+        });
+        console.log('messages new: ', messages)
         res.render('message_show', {messages, userID:req.session.user_id});
       })
       .catch(err => {
@@ -51,7 +62,6 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
-
 
   // ADD - message
   router.post('/:id', (req, res) => {
