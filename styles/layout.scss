@@ -1,7 +1,7 @@
 // See: https://sass-lang.com/
 
 body {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Orbitron', sans-serif;
   margin-top: 90px;
   background-color: #f3f5f9;
 
@@ -68,6 +68,7 @@ a {
   align-content: stretch;
   transition: transform .2s;
 }
+
 .item-listing:hover{
   box-shadow: 8px 8px rgb(0, 0, 0);
   -ms-transform: scale(1.2); /* IE 9 */
