@@ -61,8 +61,28 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  res.render("index", {userID:req.session.user_id});
+  //res.render("index", {userID:req.session.user_id});
+  const userID = req.session.user_id
+  const featuredPosts = [(Math.floor(Math.random() * 10) + 1),(Math.floor(Math.random() * 10) + 1),(Math.floor(Math.random() * 10) + 1)];
+  db.query(`
+  SELECT * FROM items
+  WHERE id = $1
+  OR id = $2
+  OR id = $3
+  ;`,featuredPosts)
+    .then(data => {
+      // console.log('the get / data is: ', data)
+      const items = data.rows;
+      res.render('featureditems', {items, userID});
+      //res.json({ items });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
 });
+
 
 // User login route
 app.get('/login/:id', (req, res) => {
