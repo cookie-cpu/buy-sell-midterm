@@ -13,21 +13,21 @@
 
   <body>
     <%- include('partials/_nav') %>
-    <section class="message-display">
+    <section class="message-display-1-on-1">
       <% for (let message of messages) { %>
-      <article class="message-history">
+      <article class="message-history-1-on-1">
         <p class="message"><%= message.message %></p>
       </article>
-    </section>
-    <% } %>
-    <section class="new-message">
-      <form action="/messages/<%= messages[0].recipient_id %>" method="POST">
-        <div>
-          <label>Your Message</label>
-          <input type="text" name="message" placeholder="Message">
-          <button type="submit" id="b1">Send New Message</button>
-        </div>
-      </form>
 
+    <% } %>
+      <article class="new-message-form">
+        <form action="/messages/<%= messages[0].recipient_id %>" method="POST">
+          <div class="new-message">
+            <label>New Message</label>
+            <input type="text" name="message" placeholder="Message">
+            <button type="submit" id="b1">Send New Message</button>
+          </div>
+        </form>
+      </article>
     </section>
   </body>
