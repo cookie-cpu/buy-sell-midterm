@@ -7,7 +7,7 @@
 * [x] CSS - basic styling (create skeleton to render data into)
 * [x] Queries to display data (write SQL queries)
 * [] CSS styling for messages
-* [] CSS styling for create listing form
+* [X] CSS styling for create listing form
 * [x] Search feature by description
 * [x] Featured items on homepage
 * [] EJS logic for edit button (only the owner can edit posts)
