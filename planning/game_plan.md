@@ -14,7 +14,7 @@
 
 
 # Minimum Viable Demo Features:
-* [x] Display homepage with products
+* [] Display homepage with products
 * [x] search (price)
 * [x] Display specific item(s) (search result) 
 * [x] Favorite that item
@@ -28,4 +28,5 @@
 # Stretch Features:
 * [] Search (description not price)
 * [] Featured Posts homepage
-* [] 
+* [] Change user id in Nav to name from DB
+* [] Media CSS styling for various screens
