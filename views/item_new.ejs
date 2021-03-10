@@ -1,11 +1,39 @@
-<form action="/items" method="POST">
-  <div>
-    <label>Make your Post</label>
-    <input type="text" name="item name" placeholder="item name">
-    <input type="text" name="description" placeholder="description">
-    <input type="text" name="price" placeholder="price">
-    <input type="text" name="photo_url" placeholder="photo_url">
-    <input type="radio" name="sold">
-    <button type="submit" id="b1">Create Post</button>
-  </div>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Items Display Page</title>
+
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+  </head>
+
+  <body id="new-form-body">
+    <%- include('partials/_nav') %>
+
+  <section id="content">
+    <header id="create-post-header">
+      <a href="https://imgur.com/eNTwq3D"><img src="https://i.imgur.com/eNTwq3D.jpg" title="source: imgur.com" /></a>
+      <h2> Create your post </h2>
+    </header>
+    <hr id="five-star-line">
+    <form id="new-form" action="/items" method="POST">
+      <label for="name">Galaxy Name</label>
+      <input type="text" name="item name" placeholder="name">
+      <label for="description">Description</label>
+      <input type="text" name="description" placeholder="description">
+      <label for="price">Price</label>
+      <input type="text" name="price" placeholder="price">
+      <label for="photo_url">Photo</label>
+      <input type="text" name="photo_url" placeholder="photo_url">
+      <button type="submit" id="new-item-button">Create Post</button>
+    </form>
+    <p id="note"> All fields are required.</p>
+</section>
+
+</body>
