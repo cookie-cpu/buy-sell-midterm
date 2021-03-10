@@ -35,8 +35,8 @@
         <input type="text" name="description" placeholder="description">
         <input type="text" name="price" placeholder="price">
         <input type="text" name="photo_url" placeholder="photo_url">
-        <input type="radio" name="sold">
-        <button type="submit">Edit Item</button>
+        <input type="checkbox" name="sold">
+        <button type="submit">Submit Edit</button>
       </div>
     </form>
     <form method="post" action="/items/<%= item.id %>/delete">
