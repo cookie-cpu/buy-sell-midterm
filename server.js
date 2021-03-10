@@ -62,9 +62,8 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  //res.render("index", {userID:req.session.user_id});
   const userID = req.session.user_id
-  const featuredPosts = [generateFeaturedIDs(),generateFeaturedIDs(),generateFeaturedIDs()];
+  const featuredPosts = generateFeaturedIDs()//generates array with 3 random post ids
   console.log(`Today's featuredPosts IDs are ${featuredPosts}`)
   db.query(`
   SELECT * FROM items
