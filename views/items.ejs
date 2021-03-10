@@ -15,7 +15,7 @@
   <body>
     <%- include('partials/_nav') %>
 
-    <section>
+    <section class="search-bar">
       <form action="/items/search/price" method="POST" id="search-items-form" class="search-items-form">
 
         <div class="search-items-form__field-wrapper">
@@ -25,7 +25,7 @@
           <input type="number" name="maximum_price_per_item" placeholder="Maximum Cost" id="search-items-form__maximum-price-per-item">
         </div>
 
-        <div class="search-items-form__field-wrapper">
+        <div class="search-button">
           <button>Search</button>
         </div>
 
