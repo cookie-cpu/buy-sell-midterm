@@ -1,18 +1,16 @@
+<section class="search-bar">
+  <form action="/items/search/price" method="POST" id="search-items-form" class="search-items-form">
 
-    <section class="search-bar">
-      <form action="/items/search/price" method="POST" id="search-items-form" class="search-items-form">
-
-        <div class="search-items-form__field-wrapper">
-          <label for="search-items-form__minimum-price-per-item">Minimum Cost</label>
-          <input type="number" name="minimum_price_per_item" placeholder="Minimum Cost" id="search-items-form__minimum-price-per-item">
-          <label for="search-items-form__maximum-price-per-item">Maximum Cost</label>
-          <input type="number" name="maximum_price_per_item" placeholder="Maximum Cost" id="search-items-form__maximum-price-per-item">
-        </div>
-
-        <div class="search-items-form__field-wrapper">
-          <button>Search</button>
-        </div>
-
-      </form>
-
-    </section>
+    <div class="search-items-form__field-wrapper">
+      <label for="search-items-form__minimum-price-per-item">Minimum Cost</label>
+      <input type="number" name="minimum_price_per_item" placeholder="Minimum Cost" id="search-items-form__minimum-price-per-item">
+      <label for="search-items-form__maximum-price-per-item">Maximum Cost</label>
+      <input type="number" name="maximum_price_per_item" placeholder="Maximum Cost" id="search-items-form__maximum-price-per-item">
+      <label for="search_text">Desciption Search</label>
+      <input type="text" name="search_text">
+      <div class="search-button">
+    </div>
+    <div class="search-button">
+      <button>Search</button>
+    </div>
+</section>

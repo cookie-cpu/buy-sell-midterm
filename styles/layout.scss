@@ -85,7 +85,7 @@ nav {
 }
 
 .search-bar {
-  height: 75px;
+  height: 120px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -94,6 +94,12 @@ nav {
 }
 .search-button {
    padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.featured{
   display: flex;
   flex-direction: row;
   justify-content: space-around;

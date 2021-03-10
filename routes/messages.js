@@ -19,7 +19,7 @@ module.exports = (db) => {
       .then(data => {
         console.log('the get / data is: ', data.rows)
         console.log('session', req.session.user_id)
-        const messages = data.rows    //.filter(row => {});
+        const messages = data.rows
         res.render('messages', {messages, userID:req.session.user_id});
       })
       .catch(err => {

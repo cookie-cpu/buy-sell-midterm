@@ -15,7 +15,7 @@
     <%- include('partials/_nav') %>
 
     <section class="messages-display">
-
+      <p id="message-inbox">Message Inbox</p>
       <% for (let message of messages) { %>
         <article class="message-history">
           <p class="sender_id"><%= message.sender_id %></p>

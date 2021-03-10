@@ -18,28 +18,33 @@ module.exports = (db) => {
    FROM items
    `;
 
-    // 3 Check if a min an max price for item has been passed in. Add them to the params array and create a WHERE clause.
+    //checks if search text was given
+    if (req.body.search_text) {
+      queryParams.push(`%${req.body.search_text}%`); //inserts text into query params
+      queryString += `
+      WHERE description ILIKE $${queryParams.length}
+      OR name ILIKE $${queryParams.length}`; //appends new SQL selectors for users desired text
+    }
 
+    // 3 Check if a min an max price for item has been passed in. Add them to the params array and create a WHERE clause.
     if ((req.body).minimum_price_per_item && (req.body).maximum_price_per_item) {
       queryParams.push((req.body).minimum_price_per_item, (req.body).maximum_price_per_item);
       if (queryParams.length === 2) {
         queryString += `WHERE price >= $${queryParams.length - 1} AND price <= $${queryParams.length}`;
       } else {
-        queryString += `AND price >= $${queryParams.length - 1} AND price <= $${queryParams.length}`;
+        queryString += ` AND price >= $${queryParams.length - 1} AND price <= $${queryParams.length}`;
       }
     }
 
     // console.log('searchJS: queryString', queryString);
     // console.log('searchJS: queryParams', queryParams);
-
+    //console.log(queryString, queryParams);
     db.query(queryString, queryParams)
       .then(data => {
         const items = data.rows;
         res.render('items', {items, userID:req.session.user_id});
       });
-
   });
-
   return router;
 };
 
