@@ -60,6 +60,7 @@ nav {
   justify-content: space-between;
   align-items: flex-start;
   align-content: stretch;
+  transition: transform .2s;
 }
 .item-listing:hover{
   box-shadow: 8px 8px rgb(10, 88, 114);
