@@ -1,8 +1,9 @@
 // See: https://sass-lang.com/
 
 body {
-  margin-top: 100px;
-  background-color: white;
+  font-family: 'Courier New', Courier, monospace;
+  margin-top: 90px;
+  background-color: gray;
 
   h1 {
     color: #244751;
@@ -10,15 +11,24 @@ body {
 }
 
 #logo {
-  width: 100px;
+  width: 120px;
 }
 
 img {
-  width: 200px;
+  width: 300px;
 }
 
+// img:hover {
+//   -ms-transform: scale(2.5); /* IE 9 */
+//   -webkit-transform: scale(2.5); /* Safari 3-8 */
+//   transform: scale(2.5);
+// }
+
 nav {
-  background-color: cornflowerblue;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  background-color: rgba(0, 0, 0, 0.9);
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -31,8 +41,8 @@ nav {
   background-color: gray;
   width: 100%;
   display: flex;
-  align-items: center;
-  flex-direction: column;
+  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: space-around;
 }
 
@@ -42,7 +52,7 @@ nav {
   padding: 12px;
   width: 100%;
   max-width: 500px;
-  height: 400px;
+  height: 450px;
   border: 2px solid black;
   box-sizing: border-box;
   display: flex;
@@ -50,10 +60,15 @@ nav {
   justify-content: space-between;
   align-items: flex-start;
   align-content: stretch;
+  transition: transform .2s;
 }
 .item-listing:hover{
   box-shadow: 8px 8px rgb(10, 88, 114);
+  -ms-transform: scale(1.2); /* IE 9 */
+  -webkit-transform: scale(1.2); /* Safari 3-8 */
+  transform: scale(1.2);
 }
+
 
 .item-info {
   display: flex;
@@ -64,6 +79,24 @@ nav {
 }
 
 .item-actions {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 5px;
+}
+
+.search-bar {
+  height: 75px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: lightgray;
+}
+.search-button {
+   padding: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;

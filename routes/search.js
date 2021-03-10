@@ -20,7 +20,6 @@ module.exports = (db) => {
 
     // 3 Check if a min an max price for item has been passed in. Add them to the params array and create a WHERE clause.
 
-
     if ((req.body).minimum_price_per_item && (req.body).maximum_price_per_item) {
       queryParams.push((req.body).minimum_price_per_item, (req.body).maximum_price_per_item);
       if (queryParams.length === 2) {
@@ -30,9 +29,9 @@ module.exports = (db) => {
       }
     }
 
+    // console.log('searchJS: queryString', queryString);
+    // console.log('searchJS: queryParams', queryParams);
 
-    console.log('searchJS: queryString', queryString);
-    console.log('searchJS: queryParams', queryParams);
     db.query(queryString, queryParams)
       .then(data => {
         const items = data.rows;
