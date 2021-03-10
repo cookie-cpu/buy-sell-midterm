@@ -1,5 +1,5 @@
+// * All routes for items are defined here
 /*
- * All routes for items are defined here
  * Since this file is loaded in server.js into api/users,
  *   these routes are mounted onto /users
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
@@ -21,8 +21,8 @@ module.exports = (db) => {
     const userID = req.session.user_id
     db.query(`SELECT * FROM items;`)
       .then(data => {
-        // console.log('the get / data is: ', data)
         const items = data.rows;
+        console.log('the items are: ', items)
         res.render('items', {items, userID});
         //res.json({ items });
       })

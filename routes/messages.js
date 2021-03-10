@@ -2,7 +2,27 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
-
+  
+ // READ - view specific message
+  router.get('/:id', (req, res) => {
+    db.query(`
+      SELECT *
+      FROM messages
+      WHERE sender_id = $1
+      AND recipient_id = $2
+      ORDER BY timestamp`
+      ,[req.session.user_id, req.params.id])
+      .then(data => {
+        // console.log('the get /:id data is: ', data.rows[0])
+        const messages = data.rows;
+        res.render('message_show', {messages, userID:req.session.user_id});
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
 
   // BROWSE - view all messages
   router.get('/', (req, res) => {
@@ -29,26 +49,7 @@ module.exports = (db) => {
       });
   });
 
-  // READ - view specific message
-  router.get('/:id', (req, res) => {
-    db.query(`
-      SELECT *
-      FROM messages
-      WHERE sender_id = $1
-      AND recipient_id = $2
-      ORDER BY timestamp`
-      ,[req.session.user_id, req.params.id])
-      .then(data => {
-        // console.log('the get /:id data is: ', data.rows[0])
-        const messages = data.rows;
-        res.render('message_show', {messages, userID:req.session.user_id});
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-  });
+
 
   // ADD - message
   router.post('/:id', (req, res) => {
