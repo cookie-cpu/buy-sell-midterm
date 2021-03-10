@@ -4,6 +4,10 @@
 
 // });
 
+$("#fav-button").submit(function(e) {
+  e.preventDefault();
+});
+
 // const onClick = function(event) {
 //   console.log('click');
 
