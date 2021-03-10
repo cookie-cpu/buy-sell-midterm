@@ -10,6 +10,7 @@ const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
 const cookieSession = require('cookie-session');
+const {generateFeaturedIDs} = require('../buy-sell-midterm/public/scripts/helpers');
 
 // PG database client/connection setup
 const { Pool } = require('pg');
@@ -61,9 +62,8 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  //res.render("index", {userID:req.session.user_id});
   const userID = req.session.user_id
-  const featuredPosts = [(Math.floor(Math.random() * 10) + 1),(Math.floor(Math.random() * 10) + 1),(Math.floor(Math.random() * 10) + 1)];
+  const featuredPosts = generateFeaturedIDs()//generates array with 3 random post ids
   console.log(`Today's featuredPosts IDs are ${featuredPosts}`)
   db.query(`
   SELECT * FROM items
