@@ -14,7 +14,7 @@ const router  = express.Router();
 module.exports = (db) => {
 
   router.get('/new', (req, res) => {
-    res.render('item_new');
+    res.render('item_new', {userID:req.session.user_id});
   });
 
   router.get('/', (req, res) => {
