@@ -63,7 +63,14 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
   const userID = req.session.user_id
-  const featuredPosts = generateFeaturedIDs()//generates array with 3 random post ids
+
+  db.query(`select count(*) from items;`)
+  .then(data => {
+    //console.log("count is", data.rows[0].count);
+    let MaxPostID = data.rows[0].count;
+    console.log(`MaxPostID is ${MaxPostID}`);
+    const featuredPosts = generateFeaturedIDs(MaxPostID)
+
   console.log(`Today's featuredPosts IDs are ${featuredPosts}`)
   db.query(`
   SELECT * FROM items
@@ -82,6 +89,9 @@ app.get("/", (req, res) => {
         .status(500)
         .json({ error: err.message });
     });
+  })
+  //generates array with 3 random post ids
+
 });
 
 
