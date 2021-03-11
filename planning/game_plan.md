@@ -15,6 +15,7 @@
 * [] Edit pages allows for editing, of only 1 field. Not all.
 * [] Edit page CSS needs fixing
 * [] Fix backgrounf image to fit whole page. bottom is currently white on some pages.
+* [] Fix msgs timestamp to display local time
 
 # Minimum Viable Demo Features:
 * [x] Display homepage with products
