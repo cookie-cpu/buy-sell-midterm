@@ -87,10 +87,11 @@ module.exports = (db) => {
   // ADD - admin add item  ==> POST /items
 
   router.post('/', (req, res) => {
-    // console.log('req.body is:', req.body)
+    //console.log('req.body is:', req.body)
+    //console.log("session is:", req.session.user_id);
     db.query(`INSERT INTO items (user_id, name, description, price, photo_url, sold)
      VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;`,
-    [req.body['user_id'], req.body['item name'], req.body.description, req.body.price, req.body.photo_url, req.body.sold])
+    [req.session.user_id, req.body['item name'], req.body.description, req.body.price, req.body.photo_url, req.body.sold])
       .then(data => {
         // console.log('the post / data is: ', data.rows[0])
         const items = data.rows[0];
