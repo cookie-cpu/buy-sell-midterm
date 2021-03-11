@@ -6,4 +6,6 @@ const generateFeaturedIDs = function (MaxPostID) {
   }
   return vals;
 }
+
+
 module.exports = {generateFeaturedIDs};

@@ -69,9 +69,7 @@ app.get("/", (req, res) => {
     //console.log("count is", data.rows[0].count);
     let MaxPostID = data.rows[0].count;
     console.log(`MaxPostID is ${MaxPostID}`);
-  })
-  //generates array with 3 random post ids
-  const featuredPosts = generateFeaturedIDs(9)
+    const featuredPosts = generateFeaturedIDs(MaxPostID)
 
   console.log(`Today's featuredPosts IDs are ${featuredPosts}`)
   db.query(`
@@ -91,6 +89,9 @@ app.get("/", (req, res) => {
         .status(500)
         .json({ error: err.message });
     });
+  })
+  //generates array with 3 random post ids
+
 });
 
 
