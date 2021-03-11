@@ -20,16 +20,10 @@ a {
 }
 
 img {
-  // width: 300px;
-  width: 280px;
+ width: 280px;
 }
 
-// img:hover {
-//   -ms-transform: scale(2.5); /* IE 9 */
-//   -webkit-transform: scale(2.5); /* Safari 3-8 */
-//   transform: scale(2.5);
-// }
-
+//Nav bar//
 nav {
   background-image: url("https://i.imgur.com/ITw0Vwu.jpeg");
   background-color: black;
@@ -47,8 +41,8 @@ a {
   color: white;
 }
 
+//Items page//
 .items-display {
-// background-image: url("https://i.imgur.com/ITw0Vwu.jpeg");
   background-color:#f8f8fa;
   background: transparent;
   width: 100%;
@@ -92,7 +86,6 @@ a {
 }
 
 .item-actions {
-
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -100,6 +93,7 @@ a {
   padding-bottom: 5px;
 }
 
+//Search bar//
 .search-bar {
   height: 120px;
   display: flex;
@@ -116,14 +110,12 @@ a {
   align-items: center;
 }
 
-
+//Featured page//
 .featured{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  // background-image: url("https://i.imgur.com/ITw0Vwu.jpeg");
-  //background-image: url("https://i.imgur.com/ITw0Vwu.jpeg");
 }
 
 .feature-title{
@@ -156,12 +148,8 @@ a {
   width: 80%;
   align-items: stretch;
 }
-// .featured-body{
-//   //background-image: url("https://i.imgur.com/ITw0Vwu.jpeg");
-// }
 
-
-//Edit item page////////////////////////////////////////////////////////////////////////////
+//Edit item page//
 .edit-items-display {
   background-color:#f8f8fa;
   background: transparent;
@@ -249,10 +237,7 @@ a {
   margin-bottom: 1em;
 }
 
-
-
-//Create new post page//////////////////////////////////////////////////////////////////
-
+//Create new post page//
 #new-form-body {
   background-color:#f3f5f9;
   background: transparent;
@@ -321,6 +306,7 @@ hr {width: 100%;
   flex-direction: column;
 }
 
+//Messages pages//
 .messages-display {
   display: flex;
   flex-direction: column;
@@ -366,7 +352,6 @@ hr {width: 100%;
     align-items: center;
     width: 100%;
     max-width: 80%;
-    /* padding: 5em; */
     margin: 7em;
     border: black 2px solid;
     background-color: whitesmoke;
@@ -376,7 +361,6 @@ hr {width: 100%;
   display: flex;
   justify-content: flex-start;
   padding: 1em;
-  /* border: black 2px solid; */
   margin: 1em;
   width: 100%;
   word-break: break-word;
