@@ -2,7 +2,6 @@ const express = require('express');
 const router  = express.Router();
 const moment = require('moment-timezone');
 
-
 module.exports = (db) => {
 
   // BROWSE - view all messages from different users
