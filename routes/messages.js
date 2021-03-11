@@ -5,8 +5,6 @@ const moment = require('moment');
 
 module.exports = (db) => {
 
-
-
   // BROWSE - view all messages from different users
   router.get('/', (req, res) => {
     db.query(`
@@ -20,8 +18,8 @@ module.exports = (db) => {
     inner join users as U1 ON U1.id = subquery.recipient_id;
     `, [req.session.user_id])
       .then(data => {
-        console.log('the get / data is: ', data.rows)
-        console.log('session', req.session.user_id)
+        // console.log('the get / data is: ', data.rows)
+        // console.log('session', req.session.user_id)
         const messages = data.rows
         res.render('messages', {messages, userID:req.session.user_id});
       })
@@ -34,8 +32,8 @@ module.exports = (db) => {
 
   // READ - view message history between two users
   router.get('/:id', (req, res) => {
-    console.log('session.id: ', req.session.user_id)
-    console.log('params.id' , req.params.id);
+    // console.log('session.id: ', req.session.user_id)
+    // console.log('params.id' , req.params.id);
     db.query(`
       SELECT users.name as name, timestamp, message, recipient_id
       FROM messages
@@ -45,13 +43,13 @@ module.exports = (db) => {
       ORDER BY timestamp;`
       ,[req.session.user_id, req.params.id])
       .then(data => {
-        console.log('the get /:id data is: ', data.rows[0])
+        // console.log('the get /:id data is: ', data.rows[0])
         const messages = data.rows.map(message => {
           const timestamp = moment(message.timestamp).format('YYYY-MM-DD hh:mm A');
           return { ...message, timestamp };
         });
-        console.log('messages new: ', messages)
-        console.log('data is:', data.rows[0])
+        // console.log('messages new: ', messages)
+        // console.log('data is:', data.rows[0])
         let name = '';
         if (data.rows[0]) {
           name = data.rows[0].name;
@@ -67,8 +65,8 @@ module.exports = (db) => {
 
   // ADD - message
   router.post('/:id', (req, res) => {
-    console.log('req.body.recipient is:', req.body.recipient_id)
-    console.log('req.params.id is ', req.params.id)
+    // console.log('req.body.recipient is:', req.body.recipient_id)
+    // console.log('req.params.id is ', req.params.id)
     db.query(`
     INSERT INTO messages (sender_id, recipient_id, message)
      VALUES ($1, $2, $3) RETURNING *;`,
