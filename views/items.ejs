@@ -29,9 +29,13 @@
           <% } else { %>
           <li>AVAILABLE</li>
           <% } %>
+          <!-- <li> item ownerID: <%= item.user_id %></li>
+          <li> user cookie id: <%= userID %></li> -->
         </div>
         <div class="item-actions">
-          <form method="GET" action="/items/<%= item.id %>"><button type="submit">Edit</button></form>
+          <% if (userID == item.user_id) { %>
+            <form method="GET" action="/items/<%= item.id %>"><button type="submit">Edit</button></form>
+            <% } %>
           <form method="POST" action="/favorites/<%= item.id %>" id="fav-button"><button>Favorite</button></form>
           <form method="GET" action="/messages/<%= item.user_id%>"><button type="submit">Send new message</button></form>
         </div>
