@@ -11,19 +11,20 @@
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 
-<body>
-<header>
-  <nav class="nav">
-    <img id="logo" src="https://i.imgur.com/4JCBiCm.jpg">
-    <a href="/">Home</a>
-    <a href="/items">Items Page</a>
-    <% if(userID) { %>
-      <a href="/favorites">My Favorites</a>
-      <a href="/items/new">Create Listing</a>
-      <a href="/users/<%= userID %>">My Listings</a>
-      <a href="/messages">My Messages</a>
-    <% }%>
-    <h5>Logged in as User: <%= userID %></h5>
-  </nav>
-</header>
-</body>
+  <body>
+    <header>
+      <nav class="nav">
+        <img id="logo" src="https://i.imgur.com/4JCBiCm.jpg">
+        <a href="/">Home</a>
+        <a href="/items">Items Page</a>
+        <% if(userID) { %>
+          <a href="/favorites">My Favorites</a>
+          <a href="/items/new">Create Listing</a>
+          <a href="/users/<%= userID %>">My Listings</a>
+          <a href="/messages">My Messages</a>
+        <% }%>
+        <h5>Logged in as User: <%= userID %></h5>
+      </nav>
+    </header>
+  </body>
+</html>

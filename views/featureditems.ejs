@@ -11,22 +11,19 @@
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
-  <%- include('partials/_nav') %>
-  <%- include('partials/_search') %>
   <body class="featured-body">
-
+    <%- include('partials/_nav') %>
+    <%- include('partials/_search') %>
     <div class="featured">
       <h1 class="feature-title">Featured Galaxies</h1>
     </div>
-
     <section class="items-display">
       <% for (let item of items) { %>
-     <article class="featured-listing">
-      <h1><%= item.name %> </h1>
-      <img src="<%= item.photo_url %>" class="featured-image">
-    </article>
-    <% } %>
+        <article class="featured-listing">
+          <h1><%= item.name %> </h1>
+          <img src="<%= item.photo_url %>" class="featured-image">
+        </article>
+      <% } %>
     </section>
-
-
   </body>
+</html>

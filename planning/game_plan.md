@@ -10,6 +10,7 @@
 * [x] CSS styling for create listing form
 * [x] Search feature by description
 * [x] Featured items on homepage
+* [] Search feature should work with only min or max value. One field can be left empty
 * [] EJS logic for edit button (only the owner can edit posts)
 
 

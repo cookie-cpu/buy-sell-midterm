@@ -12,9 +12,7 @@
   </head>
 
   <body>
-
     <%- include('partials/_nav') %>
-
     <form action="/api/items/<%=id%>" method="POST">
       <div>
         <label>Edit your Post</label>
@@ -26,21 +24,18 @@
         <button type="submit">Submit Edit</button>
       </div>
     </form>
-
     <section class="items-display">
-
-    <article class="item-listing">
-      <h1>Item ID: <%= items.id %> </h1>
-      <h1><%= items.name %> </h1>
-      <img src="<%= items.photo_url %>">
-      <div>
-        <li><%= items.description %> </li>
-        <li>$ <%= items.price %> </li>
-        <li><%= items.sold %></li>
-      </div>
-      <button href="/itemUpdate">EDIT</button>
-    </article>
-
+      <article class="item-listing">
+        <h1>Item ID: <%= items.id %> </h1>
+        <h1><%= items.name %> </h1>
+        <img src="<%= items.photo_url %>">
+        <div>
+          <li><%= items.description %> </li>
+          <li>$ <%= items.price %> </li>
+          <li><%= items.sold %></li>
+        </div>
+        <button href="/itemUpdate">EDIT</button>
+      </article>
     </section>
-
   </body>
+</html>

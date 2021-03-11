@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Items Display Page</title>
+    <title>Favorites</title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -14,9 +14,7 @@
 
   <body>
     <%- include('partials/_nav') %>
-
     <section class="items-display">
-
       <% for(let item of favorites) { %>
         <article class="item-listing">
           <h1><%= item.name %> </h1>
@@ -26,17 +24,9 @@
             <li>$ <%= item.price %> </li>
             <li><%= item.sold %></li>
           </div>
-          <form method="POST" action="/favorites/<%= item.id %>/delete"><button type="submit">Unfav</button></form>
+          <form method="POST" action="/favorites/<%= item.id %>/delete"><button type="submit">Unfavorite</button></form>
         </article>
-        <% } %>
-
+      <% } %>
     </section>
-
-
-
-
-
-
-
-
   </body>
+</html>

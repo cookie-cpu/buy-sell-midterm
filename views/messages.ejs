@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Items Display Page</title>
+    <title>Message Inbox</title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -14,7 +14,6 @@
 
   <body>
     <%- include('partials/_nav') %>
-
     <section class="messages-display">
       <p id="message-inbox">Message Inbox</p>
       <% for (let message of messages) { %>
@@ -24,9 +23,7 @@
           <p class="message">Last message: <%= message.message%></p>
           <form method="GET" action="/messages/<%= message.recipient_id %>"><button type="submit">View Chat</button></form>
         </article>
-        <% } %>
-
-
+      <% } %>
     </section>
-
   </body>
+</html>
