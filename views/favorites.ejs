@@ -19,12 +19,22 @@
         <article class="item-listing">
           <h1><%= item.name %> </h1>
           <img src="<%= item.photo_url %>">
-          <div>
-            <li><%= item.description %> </li>
+          <div class="item-info">
+            <li> <%= item.description %> </li>
             <li>$ <%= item.price %> </li>
-            <li><%= item.sold %></li>
+            <% if (item.sold) { %>
+            <li>SOLD</li>
+            <% } else { %>
+            <li>AVAILABLE</li>
+            <% } %>
           </div>
-          <form method="POST" action="/favorites/<%= item.id %>/delete"><button type="submit">Unfavorite</button></form>
+          <div class="item-actions">
+            <% if (userID == item.user_id) { %>
+              <form method="GET" action="/items/<%= item.id %>"><button type="submit">Edit</button></form>
+              <% } %>
+              <form method="POST" action="/favorites/<%= item.id %>/delete"><button type="submit">Unfavorite</button></form>
+            <form method="GET" action="/messages/<%= item.user_id%>"><button type="submit">Send new message</button></form>
+          </div>
         </article>
       <% } %>
     </section>
