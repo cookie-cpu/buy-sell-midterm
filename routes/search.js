@@ -12,7 +12,7 @@ module.exports = (db) => {
     // 1 Setup an array to hold any parameters that may be available for the query.
     const queryParams = [];
 
-    //  // 2 Start the query with all information that comes before the WHERE clause.
+    // 2 Start the query with all information that comes before the WHERE clause.
     let queryString = `
    SELECT *
    FROM items
@@ -38,7 +38,7 @@ module.exports = (db) => {
 
     // console.log('searchJS: queryString', queryString);
     // console.log('searchJS: queryParams', queryParams);
-    //console.log(queryString, queryParams);
+    // console.log(queryString, queryParams);
     db.query(queryString, queryParams)
       .then(data => {
         const items = data.rows;
