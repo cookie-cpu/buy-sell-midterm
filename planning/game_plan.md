@@ -35,3 +35,4 @@
 * [] Change user id in Nav to name from DB
 * [] Media CSS styling for various screens
 * [] Quality of life changes for edit post page
+* [] Refactor generateFeaturedIDs to use the COUNT(items) as a parameter
