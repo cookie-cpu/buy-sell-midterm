@@ -39,6 +39,7 @@ nav {
   top: 0;
   width: 100%;
   color: white;
+  font-family: 'Orbitron', sans-serif;
 }
 
 a {
@@ -163,7 +164,8 @@ a {
 
 #new-form-body {
   background-color:#f3f5f9;
-  background: transparent;
+  background-image: url("https://i.imgur.com/ITw0Vwu.jpeg");
+  // background: transparent;
   display: flex;
   flex-wrap: wrap;
   justify-content:center;
@@ -235,18 +237,20 @@ hr {width: 100%;
   justify-content: center;
   align-items: center;
   padding: 5em;
-
+  background-image: url("https://i.imgur.com/ITw0Vwu.jpeg");
 }
 
 #message-inbox {
   font-size: 2em;
   font-weight: bold;
+  color: #fff;
 }
 
 .msg-body {
   display: flex;
   align-items: center;
   background-color: lightgray;
+  background-image: url("https://i.imgur.com/ITw0Vwu.jpeg");
 }
 
 .message-history {
