@@ -12,7 +12,7 @@
 * [x] Featured items on homepage
 * [x] EJS logic for edit button (only the owner can edit posts)
 * [] Search feature should work with only min or max value. One field can be left empty
-* [] Edit pages allows for editing, of only 1 field. Not all.
+* [X] Edit pages allows for editing, of only 1 field. Not all.
 * [X] Edit page CSS needs fixing
 * [] Fix backgroung image to fit whole page. bottom is currently white on some pages.
 * [X] Fix msgs timestamp to display local time
