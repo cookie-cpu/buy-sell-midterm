@@ -34,6 +34,8 @@
         <% } else { %>
         <li>AVAILABLE</li>
          <% } %>
+         <li> <% userID %></li>
+         <li> <% item.user_id %></li>
       </div>
       <div class="item-actions">
         <% if(userID === item.user_id) { %>
