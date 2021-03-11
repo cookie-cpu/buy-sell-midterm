@@ -18,7 +18,7 @@ module.exports = (db) => {
     inner join users as U1 ON U1.id = subquery.recipient_id;
     `, [req.session.user_id])
       .then(data => {
-        const messages = data.rows
+        const messages = data.rows;
         res.render('messages', {messages, userID:req.session.user_id});
       })
       .catch(err => {
@@ -37,13 +37,13 @@ module.exports = (db) => {
       WHERE sender_id = $1
       AND recipient_id = $2
       ORDER BY timestamp;`
-      ,[req.session.user_id, req.params.id])
+    ,[req.session.user_id, req.params.id])
       .then(data => {
         const messages = data.rows.map(message => {
           const timestamp = moment.tz(message.timestamp, 'America/Vancouver').format('YYYY-MM-DD hh:mm A');
           return { ...message, timestamp };
         });
-        console.log('messages new: ', messages)
+        console.log('messages new: ', messages);
         let name = '';
         if (data.rows[0]) {
           name = data.rows[0].name;
