@@ -53,25 +53,64 @@ module.exports = (db) => {
 
 // EDIT - admin edit data ==> POST /items/:id
 
-  // router.get("/:id/update", (req, res) => {
-  //   res.render("itemUpdate")
-  // });
-
 // THIS IS THE EDIT BUTTON ROUTE
   router.post('/:id', (req, res) => {
     // console.log('the post/:id req.params.id is:', req.params.id);
     // console.log('req.body is:', req.body);
     // console.log('req.body.name is:', req.body['item name']);
-    db.query(`
-    UPDATE items SET
-    user_id = $1,
-    name = $2,
-    description = $3,
-    price = $4,
-    photo_url = $5,
-    sold = $6
-    WHERE id = $7;`
-    ,[req.body['user_id'], req.body['item name'], req.body.description, req.body.price, req.body.photo_url, req.body.sold, req.params.id])
+    const queryParams = [];
+
+    let queryString = `UPDATE items SET `;
+
+    // if (req.body['user_id']) {
+    //   queryParams.push(req.body['user_id']);
+    //   queryString += `user_id = $${queryParams.length} `;
+    // }
+
+    if (req.body['item name']) {
+      queryParams.push(req.body['item name']);
+      queryString += `name = $${queryParams.length}, `;
+    }
+
+    if (req.body.description) {
+      queryParams.push(req.body.description);
+      queryString += `description = $${queryParams.length}, `;
+    }
+
+    if (req.body.price) {
+      queryParams.push(req.body.price);
+      queryString += `price = $${queryParams.length}, `;
+    }
+
+    if (req.body.photo_url) {
+      queryParams.push(req.body.photo_url);
+      queryString += `photo_url = $${queryParams.length}, `;
+    }
+
+    if (req.body.sold) {
+      queryParams.push(req.body.sold);
+      queryString += `sold = $${queryParams.length}, `;
+    }
+
+    queryString = queryString.slice(0, queryString.length - 2);
+
+    queryParams.push(req.params.id);
+    queryString += `WHERE id = $${queryParams.length};`
+    console.log('querystring is:', queryString)
+    db.query(queryString, queryParams)
+
+
+
+    // db.query(`
+    // UPDATE items SET
+    // user_id = $1,
+    // name = $2,
+    // description = $3,
+    // price = $4,
+    // photo_url = $5,
+    // sold = $6
+    // WHERE id = $7;`
+    // ,[req.body['user_id'], req.body['item name'], req.body.description, req.body.price, req.body.photo_url, req.body.sold, req.params.id])
       .then(data => {
         // console.log('the post /:id data is: ', data.rows[0])
         const items = data.rows[0];
@@ -89,6 +128,7 @@ module.exports = (db) => {
   router.post('/', (req, res) => {
     //console.log('req.body is:', req.body)
     //console.log("session is:", req.session.user_id);
+
     db.query(`INSERT INTO items (user_id, name, description, price, photo_url, sold)
      VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;`,
     [req.session.user_id, req.body['item name'], req.body.description, req.body.price, req.body.photo_url, req.body.sold])
