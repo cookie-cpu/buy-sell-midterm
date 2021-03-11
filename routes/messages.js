@@ -1,6 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-const moment = require('moment');
+const moment = require('moment-timezone');
 
 
 module.exports = (db) => {
@@ -45,10 +45,11 @@ module.exports = (db) => {
       .then(data => {
         // console.log('the get /:id data is: ', data.rows[0])
         const messages = data.rows.map(message => {
-          const timestamp = moment(message.timestamp).format('YYYY-MM-DD hh:mm A');
+          const timestamp = moment.tz(message.timestamp, 'America/Vancouver').format('YYYY-MM-DD hh:mm A');
+
           return { ...message, timestamp };
         });
-        // console.log('messages new: ', messages)
+        console.log('messages new: ', messages)
         // console.log('data is:', data.rows[0])
         let name = '';
         if (data.rows[0]) {
