@@ -20,9 +20,9 @@
         <div class="header-edits">
           <h1><%= item.name %> </h1>
           <img src="<%= item.photo_url %>">
-          <div class="item-info">
-            <label>Description: <%= item.description %> </label>
-            <label>Price: $ <%= item.price %> </label>
+          <div class="edit-item-info">
+            <label id="edit-pg-description"><b>Description: </b><%= item.description %> </label>
+            <label><b>Price: </b>$ <%= item.price %> </label>
             <!-- <label><%= item.sold %></label> -->
           </div>
         </div>
@@ -38,7 +38,7 @@
             <input type="text" name="price" placeholder="price">
             <label>Photo</label>
             <input type="text" name="photo_url" placeholder="photo_url">
-            <label>Is it sold? (If yes, tick box)</label>
+            <label>Is it sold? (If yes, please tick box)</label>
             <input type="checkbox" name="sold">
             <button class="edit-submit-button" type="submit">Submit Edit</button>
           </div>
