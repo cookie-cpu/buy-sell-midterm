@@ -46,19 +46,17 @@ module.exports = (db) => {
       ,[req.session.user_id, req.params.id])
       .then(data => {
         console.log('the get /:id data is: ', data.rows[0])
-        // const messages = data.rows;
         const messages = data.rows.map(message => {
           const timestamp = moment(message.timestamp).format('YYYY-MM-DD hh:mm A');
           return { ...message, timestamp };
-          //   name: message.name,
-          //   message: message.message,
-          //   recipient_id: message.recipient_id,
-          //   timestamp: timestamp
-          // }
         });
         console.log('messages new: ', messages)
-        console.log('data is:', data.rows[0].name)
-        res.render('message_show', {messages, userID:req.session.user_id, ownerID:req.params.id, name:data.rows[0].name });
+        console.log('data is:', data.rows[0])
+        let name = '';
+        if (data.rows[0]) {
+          name = data.rows[0].name;
+        }
+        res.render('message_show', {messages, userID:req.session.user_id, ownerID:req.params.id, name:name });
       })
       .catch(err => {
         res

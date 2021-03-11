@@ -15,13 +15,17 @@
   <body class="msg-body">
     <%- include('partials/_nav') %>
     <section class="message-display-1-on-1">
+      <% if (name) { %>
       <p class="msgs-with">Messages with <%= name %></p>
+      <% } else { %>
+        <p class="msgs-with">Message</p>
+    <% } %>
       <% for (let message of messages) { %>
       <article class="message-history-1-on-1">
         <p class="timestamp"><%= message.timestamp %></p>
         <p class="message"><%= message.message %></p>
       </article>
-    <% } %>
+      <% } %>
       <article class="new-message-form">
         <form action="/messages/<%= ownerID %>" method="POST">
           <div class="new-message">

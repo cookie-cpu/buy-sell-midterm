@@ -14,16 +14,16 @@ module.exports = (db) => {
 
   router.get("/:user_id", (req, res) => {
     const userID = parseInt(req.session.user_id, 10)
-    console.log('userid', userID)
+    // console.log('userid', userID)
     db.query(
     `
     SELECT * FROM items WHERE user_id = $1;
     `, [userID])
       .then(data => {
-        console.log('data on line 23', data)
+        // console.log('data on line 23', data)
         const items = data.rows;
-        console.log('items length', items.length)
-        console.log('userID', userID)
+        // console.log('items length', items.length)
+        // console.log('userID', userID)
         res.render('items', {items: items, userID});
         // res.json({ users });
       })
