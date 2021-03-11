@@ -6,13 +6,15 @@
 * [x] Write Routes for each page (GET/POST for /items etc)
 * [x] CSS - basic styling (create skeleton to render data into)
 * [x] Queries to display data (write SQL queries)
-* [] CSS styling for messages
+* [x] CSS styling for messages
 * [x] CSS styling for create listing form
 * [x] Search feature by description
 * [x] Featured items on homepage
-* [] Search feature should work with only min or max value. One field can be left empty
 * [] EJS logic for edit button (only the owner can edit posts)
-
+* [] Search feature should work with only min or max value. One field can be left empty
+* [] Edit pages allows for editing, of only 1 field. Not all.
+* [] Edit page CSS needs fixing
+* [] Fix backgrounf image to fit whole page. bottom is currently white on some pages.
 
 # Minimum Viable Demo Features:
 * [x] Display homepage with products
