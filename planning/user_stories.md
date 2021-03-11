@@ -18,8 +18,6 @@ This lets buyers find the items they are looking for quickly, and easily contact
 * Edit product status
 * Delete SOLD item
 
-
-
 ### Requirements:
 * users can see featured items on a main feed
 * users can filter items by price,
@@ -36,7 +34,7 @@ This lets buyers find the items they are looking for quickly, and easily contact
 * User = buyer
 * Admin = seller
 
-*As a ___ I can ___ because ___
+As a ___ I can ___ because ___
 
 As a user, I can see the featured items on my main feed because I want to buy items
 
@@ -53,7 +51,6 @@ As an admin, I can remove items from the site because I don't want to sell that 
 As an admin, I can mark items as sold because a user purchased the item.
 
 As an admin, I can send a reply to the user who messaged me because I want to negotiate. 
-
 
 ### NOUNS
 * users
