@@ -282,6 +282,8 @@ hr {width: 100%;
 }
 
 .message-history-1-on-1 {
+  display: flex;
+  justify-content: flex-start;
   padding: 1em;
   /* border: black 2px solid; */
   margin: 1em;
@@ -301,4 +303,8 @@ hr {width: 100%;
 
  .msgs-with {
    font-size: 25px;
+ }
+
+ .timestamp {
+  margin: 2em;
  }
