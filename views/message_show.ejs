@@ -15,8 +15,8 @@
   <body class="msg-body">
     <%- include('partials/_nav') %>
     <section class="message-display-1-on-1">
+      <p class="msgs-with">Messages with <%= name %></p>
       <% for (let message of messages) { %>
-        <p class="msgs-with">Messages with <%= message.name %></p>
       <article class="message-history-1-on-1">
         <p class="timestamp"><%= message.timestamp %></p>
         <p class="message"><%= message.message %></p>
@@ -24,7 +24,7 @@
 
     <% } %>
       <article class="new-message-form">
-        <form action="/messages/<%= messages[0].recipient_id %>" method="POST">
+        <form action="/messages/<%= ownerID %>" method="POST">
           <div class="new-message">
             <label>New Message</label>
             <input type="text" name="message" placeholder="Message">
