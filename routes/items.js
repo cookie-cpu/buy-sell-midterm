@@ -12,7 +12,7 @@ module.exports = (db) => {
 
     const userID = req.session.user_id;
 
-    db.query(`SELECT * FROM items;`)
+    db.query(`SELECT * FROM items ORDER BY id DESC;`)
       .then(data => {
         const items = data.rows;
         console.log('the items are: ', items);
